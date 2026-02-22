@@ -22,7 +22,7 @@ Transforms AI agents into elite design architects capable of producing award-win
 
 ```bash
 # Clone to your OpenClaw skills directory
-git clone https://github.com/YOUR_USERNAME/hadnoir-dna.git ~/.openclaw/skills/hadnoir_dna_v4
+git clone https://github.com/masalale/hadnoir-dna.git ~/.openclaw/skills/hadnoir_dna_v4
 
 # Or use clawhub (when published)
 clawhub install hadnoir-dna
