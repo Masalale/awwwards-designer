@@ -859,3 +859,100 @@ export default config;
 | Full control over markup | Speed of development matters |
 | Learning/experimentation | Production deadline |
 | Specific accessibility needs | General accessibility sufficient |
+
+---
+
+## Icon System — Lucide
+
+**Default: Lucide Icons**
+
+Lucide is the recommended icon library for all projects. It provides:
+- Consistent, beautiful design language
+- Tree-shakeable (only used icons included)
+- Native React/Next.js support
+- No emoji icons (professional standard)
+
+### Installation
+
+```bash
+npm install lucide-react
+# or
+yarn add lucide-react
+# or
+pnpm add lucide-react
+```
+
+### Usage Patterns
+
+```tsx
+// Import specific icons (tree-shakeable)
+import { ShoppingBag, Menu, X, ArrowRight, Heart } from 'lucide-react';
+
+// Basic usage
+<ShoppingBag className="w-6 h-6" />
+
+// With sizing
+<Heart className="w-5 h-5" />
+
+// With animation
+<ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+
+// Icon button (always with aria-label)
+<button aria-label="Add to cart">
+  <ShoppingBag className="w-5 h-5" />
+</button>
+```
+
+### Icon Guidelines
+
+| Rule | Do | Don't |
+|------|-----|-------|
+| **Size** | Use consistent sizing (w-5 h-5 default) | Mix random sizes |
+| **Color** | Inherit from text color | Hardcode colors |
+| **Stroke width** | Default (2) is standard | Customize per icon |
+| **Accessibility** | Always use `aria-label` for icon-only buttons | Leave unlabeled |
+| **Set** | Lucide only | Mix with other icon sets |
+
+### Common Fashion Icons
+
+```tsx
+import { 
+  ShoppingBag,    // Cart
+  Heart,          // Wishlist/Favorite
+  User,           // Account
+  Menu,           // Navigation
+  Search,         // Search
+  X,              // Close
+  ChevronRight,   // Navigation arrow
+  ArrowRight,     // CTA arrow
+  Instagram,      // Social
+  Facebook,       // Social
+  Twitter,        // Social
+  Mail,           // Newsletter
+  Phone,          // Contact
+  MapPin,         // Location
+  Star,           // Rating
+  Filter,         // Product filter
+  Grid3x3,        // Grid view
+  List,           // List view
+  Share2,         // Share
+  ExternalLink    // External link
+} from 'lucide-react';
+```
+
+### Forbidden (Auto-Reject)
+
+- ❌ Emoji icons (🛒 ❤️ 👤)
+- ❌ Random icon sets mixed together
+- ❌ Custom SVG icons without consistency
+- ❌ FontAwesome (outdated aesthetic)
+
+### Size Scale
+
+```css
+/* Consistent icon sizing */
+.icon-xs { @apply w-4 h-4; }   /* 16px - Inline */
+.icon-sm { @apply w-5 h-5; }   /* 20px - Default */
+.icon-md { @apply w-6 h-6; }   /* 24px - Buttons */
+.icon-lg { @apply w-8 h-8; }   /* 32px - Featured */
+```

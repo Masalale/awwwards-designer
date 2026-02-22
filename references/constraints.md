@@ -42,6 +42,26 @@ Use this as a pre-delivery checklist. Any violation is a failure.
 
 ---
 
+## 🔣 Icon Constraints
+
+### Forbidden Icons
+| Never Use | Why | Instead |
+|-----------|-----|---------|
+| Emoji icons (🛒 ❤️ 👤) | Unprofessional, inconsistent | Lucide icons |
+| Mixed icon sets | Inconsistent aesthetic | Lucide only |
+| FontAwesome | Outdated, overused | Lucide icons |
+| Custom SVGs without system | Inconsistent sizing/styling | Lucide icons |
+
+### Required Icon Patterns
+| Check | Rule |
+|-------|------|
+| ✅ | Use Lucide React exclusively |
+| ✅ | Consistent sizing (w-5 h-5 default) |
+| ✅ | `aria-label` on all icon-only buttons |
+| ✅ | Inherit color from parent text |
+
+---
+
 ## 🌊 Motion Constraints
 
 ### Forbidden Animation Patterns
@@ -109,6 +129,8 @@ Use this as a pre-delivery checklist. Any violation is a failure.
 - [ ] No 3-column feature grids
 - [ ] Texture or depth somewhere
 - [ ] Asymmetric or unexpected layout element
+- [ ] **Lucide icons only (no emojis, no FontAwesome)**
+- [ ] **All icon-only buttons have aria-label**
 
 ### Motion
 - [ ] No `transition: all`
