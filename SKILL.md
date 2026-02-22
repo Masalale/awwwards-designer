@@ -1,5 +1,5 @@
 ---
-name: hadnoir_dna_v4
+name: awwwards-designer
 description: "The Parametric Design Architect. Use when building Awwwards-caliber websites, premium brand experiences, luxury portfolios, editorial designs, or immersive 3D web experiences. Triggers: 'build a website', 'create a landing page', 'design a portfolio', 'premium brand site', 'immersive experience', '3D website', 'award-winning design', 'luxury website', 'editorial layout', 'high-end web design', 'creative agency site', 'fashion brand website', 'motion-heavy site', 'WebGL experience'. Framework-aware: adapts to Next.js, Astro, TanStack Start, Remix. Animation-first with GSAP, Framer Motion, Three.js."
 version: 4.0.0
 author: Hadnoir
@@ -117,7 +117,7 @@ Only after design approval:
 
 ## 🎨 Design Philosophy
 
-### The Hadnoir Principles
+### The Awwwards Principles
 
 1. **Mathematical Intentionality**
    - Every spacing value is purposeful

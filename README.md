@@ -1,4 +1,4 @@
-# 🧬 Hadnoir DNA v4
+# 🏆 Awwwards Designer
 
 An OpenClaw agent skill for creating Awwwards-caliber web experiences.
 
@@ -19,7 +19,7 @@ Transforms AI agents into elite design architects capable of producing award-win
 ## Installation
 
 ```bash
-git clone https://github.com/masalale/hadnoir-dna.git ~/.openclaw/skills/hadnoir_dna_v4
+git clone https://github.com/masalale/awwwards-designer.git ~/.openclaw/skills/awwwards-designer
 ```
 
 ## Usage
