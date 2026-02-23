@@ -5,6 +5,9 @@ This guide condenses the fundamental technologies and technical best practices f
 ---
 
 ## 🏗️ Frameworks & Architecture
+**Execution Primitives: TypeScript & Bun**
+- **Strictly TypeScript**: All projects must be built using TypeScript (`.ts`/`.tsx`, or `.astro`). Never use vanilla `.js` or `.jsx`. TypeScript acts as an absolute compile-time guardrail preventing UI and prop hallucinations.
+- **Bun for Velocity**: Always use Bun (`bun create`, `bun add`, `bun run`) instead of npm/yarn. Bun significantly reduces terminal output latency during dependency installation, allowing you to execute faster.
 **Mandatory Default: Astro.**
 Astro is the undisputed king for 95% of Awwwards-caliber sites (portfolios, landing pages, immersive scroll storytelling). 
 - **Islands Architecture**: Use `client:load` or `client:visible` to hydrate heavy React/WebGL chunks while keeping the rest of the DOM blazing fast with zero JS.

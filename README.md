@@ -2,7 +2,7 @@
 
 An OpenClaw agent skill for creating Awwwards-caliber web experiences.
 
-![Skill Version](https://img.shields.io/badge/version-v4.1-blue)
+![Skill Version](https://img.shields.io/badge/version-v4.2-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## What This Skill Does
