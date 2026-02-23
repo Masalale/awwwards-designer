@@ -57,6 +57,54 @@ button.addEventListener('mouseleave', () => {
 });
 ```
 
+### SplitType + GSAP Text Reveal
+Accessible, staggered character reveals for massive hero typography.
+```typescript
+import SplitType from 'split-type';
+import gsap from 'gsap';
+
+// Initialize split (splits text into lines, words, and chars)
+const text = new SplitType('.hero-title', { types: 'lines, words, chars' });
+
+// Staggered character reveal
+gsap.from(text.chars, {
+  y: '100%',
+  opacity: 0,
+  rotationZ: 10,
+  duration: 0.8,
+  ease: 'power3.out',
+  stagger: 0.02,
+});
+```
+
+### High-Performance Custom Cursor
+Avoid React state re-renders by aggressively manipulating the DOM directly using GSAP.
+```tsx
+import { useEffect } from 'react';
+import gsap from 'gsap';
+
+export function CustomCursor() {
+  useEffect(() => {
+    const cursor = document.querySelector('.custom-cursor');
+    // Using GSAP quickSetter for 60fps performance without React state
+    const setX = gsap.quickSetter(cursor, 'x', 'px');
+    const setY = gsap.quickSetter(cursor, 'y', 'px');
+
+    const onMouseMove = (e: MouseEvent) => {
+      setX(e.clientX);
+      setY(e.clientY);
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+    return () => window.removeEventListener('mousemove', onMouseMove);
+  }, []);
+
+  return (
+    <div className="custom-cursor fixed top-0 left-0 w-4 h-4 rounded-full bg-white pointer-events-none mix-blend-difference z-[9999]" />
+  );
+}
+```
+
 ### Advanced Grid & Layout CSS Patterns
 
 **Bento Grid (Modular)**

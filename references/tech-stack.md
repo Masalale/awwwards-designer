@@ -5,12 +5,16 @@ This guide condenses the fundamental technologies and technical best practices f
 ---
 
 ## 🏗️ Frameworks & Architecture
-Choose the right tool for the job. Default to React-based ecosystems unless static generation is the primary requirement.
+**Mandatory Default: Astro.**
+Astro is the undisputed king for 95% of Awwwards-caliber sites (portfolios, landing pages, immersive scroll storytelling). 
+- **Islands Architecture**: Use `client:load` or `client:visible` to hydrate heavy React/WebGL chunks while keeping the rest of the DOM blazing fast with zero JS.
+- **Native Superpowers**: Always use `<ViewTransitions />` for SPA-like page morphing, `<Image />` from `astro:assets` for automatic format optimization/lazy-loading, and **Content Collections** for type-safe project data.
+- **State Management**: To share state across isolated React islands in Astro, use `@nanostores/react` (or vanilla nanostores). *Never* attempt to wrap an Astro layout in a React `<Context.Provider>`—it will crash.
 
-- **Next.js (App Router)**: SEO-critical, complex web apps. Use Server Components by default; only use `'use client'` where interactivity or animation is required.
-- **Astro**: Content-heavy, fast static sites. Use the Islands Architecture (`client:visible`, `client:load`) to hydrate only the interactive parts, minimizing shipped JS.
-- **Remix & TanStack Start**: Excellent for heavy routing or form-mutations.
-- **Vite + React**: Rapid prototyping and SPAs.
+**The Only Escape Hatch: TanStack Start.**
+Use TanStack Start *only* if the user explicitly demands a complex, state-heavy, full-stack authenticated web application or SaaS dashboard. You must use your available web search or documentation-reading tools to pull the absolute latest TanStack Start documentation before writing its code, as its syntax evolves rapidly.
+
+*Do not use Next.js, Remix, or plain Vite.* Next.js server-component boundaries cause UI animation doom loops, and Remix's v7 router migration is chaotic. Stick to the Astro / TanStack binary.
 
 *Performance Rule*: Always optimize images (explicit width/height to prevent CLS), lazy-load below the fold, and preload critical fonts.
 
@@ -36,7 +40,7 @@ Tailwind CSS is the default choice for velocity and consistency, but CSS-in-JS c
 Motion should feel orchestrated, never random.
 
 - **CSS Animations**: Use for micro-interactions, hover states, and simple UI transitions. Zero JS overhead.
-- **Framer Motion**: The go-to for React interface orchestration. Ideal for gestures, `AnimatePresence` (entry/exit animations), and layout transitions.
+- **Framer Motion (`motion/react`)**: The go-to for React interface orchestration. Ideal for gestures, `AnimatePresence` (entry/exit animations), and layout transitions. Note: The package was recently renamed to `motion/react` (formerly `framer-motion`).
 - **GSAP + ScrollTrigger**: The gold standard for complex, scroll-linked storytelling, pinning, and sequenced timelines.
   - *Critical fix*: Always cleanup GSAP contexts in React using `ctx.revert()` in the `useEffect` cleanup function.
 - **Lenis**: Use for buttery smooth scrolling foundations.

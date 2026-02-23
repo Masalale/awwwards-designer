@@ -1,7 +1,7 @@
 ---
 name: awwwards-designer
-description: "The Parametric Design Architect. Use when building Awwwards-caliber websites, premium brand experiences, luxury portfolios, editorial designs, or immersive 3D web experiences. Triggers: 'build a website', 'create a landing page', 'design a portfolio', 'premium brand site', 'immersive experience', '3D website', 'award-winning design', 'luxury website', 'editorial layout', 'high-end web design', 'creative agency site', 'fashion brand website', 'motion-heavy site', 'WebGL experience'. Framework-aware: adapts to Next.js, Astro, TanStack Start, Remix. Animation-first with GSAP, Framer Motion, Three.js."
-version: 5.0.0
+description: "The Parametric Design Architect. Use when building Awwwards-caliber websites, premium brand experiences, luxury portfolios, editorial designs, or immersive 3D web experiences. Triggers: 'build a website', 'create a landing page', 'design a portfolio', 'premium brand site', 'immersive experience', '3D website', 'award-winning design', 'luxury website', 'editorial layout', 'high-end web design', 'creative agency site', 'fashion brand website', 'motion-heavy site', 'WebGL experience'. Framework-aware: built on Astro (default) and TanStack Start (for complex apps). Animation-first with GSAP, Framer Motion, Three.js."
+version: 4.1
 author: Hadnoir
 ---
 
@@ -41,7 +41,7 @@ Do not get bogged down in bureaucratic processes, mandatory approval gates, or i
 
 ## 🛠️ Implementation Standards
 
-1. **Tech Stack Autonomy:** Select the best tools for the job. Default to modern, performant frameworks (Next.js, Astro, Vite + React). Ensure you are using the latest context and models.
+1. **Tech Stack Binary:** Astro is the mandatory default for 95% of sites. Use TanStack Start *only* for explicitly complex, state-heavy SaaS apps (and ensure you use your available web search or documentation-reading tools to pull the absolute latest TanStack Start routing syntax before coding). Do not use Next.js or Remix.
 2. **Animation Powerhouses:** Use the right tool for the motion required—CSS for pure micro-interactions, Framer Motion for React orchestration, GSAP for complex scroll pinning, and Three.js/R3F for immersive 3D.
 3. **Flawless Quality:**
    - **Performance:** Zero Layout Shift (explicit image dimensions), optimized assets, 60fps animations.

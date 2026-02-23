@@ -2,19 +2,18 @@
 
 An OpenClaw agent skill for creating Awwwards-caliber web experiences.
 
-![Skill Version](https://img.shields.io/badge/version-4.0.0-blue)
+![Skill Version](https://img.shields.io/badge/version-v4.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## What This Skill Does
 
-Transforms AI agents into elite design architects capable of producing award-winning websites.
+Transforms AI agents into elite design architects capable of producing award-winning websites autonomously and efficiently. It prioritizes executing high-quality code over bureaucratic planning.
 
 ### Key Features
-
-- **🎯 Design-First Process** — Code only after design approval
-- **📐 Mathematical Intentionality** — Golden Ratio (Φ) based proportions
-- **🎨 Bespoke Creation** — Unique visual languages every time
-- **🌊 Animation-First** — GSAP, Framer Motion, Three.js patterns
+- **🎯 Execution-First** — Biased towards rapid, high-quality output.
+- **📐 Mathematical Intentionality** — Golden Ratio (Φ) based proportions.
+- **🎨 Bespoke Creation** — Unique visual languages preventing generic "AI slop."
+- **🌊 Animation-First** — GSAP, Framer Motion, and Three.js recipes.
 
 ## Installation
 
@@ -24,34 +23,22 @@ git clone https://github.com/masalale/awwwards-designer.git ~/.openclaw/skills/a
 
 ## Usage
 
-Say any of these to activate:
-- "build a website"
-- "create a landing page"
-- "design a portfolio"
-- "premium brand site"
-- "award-winning design"
+When activated by your AI agent, use natural language triggers like:
+- *"Build a portfolio website."*
+- *"Create an Awwwards-caliber landing page."*
+- *"Design an immersive 3D experience."*
 
-### The 4-Phase Process
-
-1. **Discovery** — Explore context, ask questions
-2. **Design Direction** — Present 2-3 bespoke approaches
-3. **Approval** — Design doc at `docs/designs/`
-4. **Implementation** — Code with constraints
+The agent will automatically determine the best approach (defaulting to Astro) and execute immediately, pulling predefined parametric design constraints, layouts, and high-end animation recipes to deliver production-ready code.
 
 ## Skill Architecture
 
 ```
 SKILL.md                          # Main manifest
 references/
-├── parametric-design.md          # Φ-based mathematics
-├── constraints.md                # Forbidden patterns
-├── animation-systems.md          # GSAP, Framer, Three.js
-├── typography-pairings.md        # Distinctive fonts
-├── color-theory.md               # Palette generation
-└── styling-frameworks.md         # Tailwind, shadcn/ui
+├── design-theory.md              # Aesthetic foundations and mathematics
+├── tech-stack.md                 # Frameworks (Astro & TanStack Start)
+└── recipes.md                    # Explicit copy-pasteable code, constraints, and QA
 ```
-
-**Total: ~80KB of design intelligence**
 
 ## License
 
