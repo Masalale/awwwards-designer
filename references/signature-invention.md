@@ -69,7 +69,7 @@ These examples demonstrate how to apply the framework to different brand archety
 - **Brand Metaphors**: Terroir, raw fermentation, imperfect beauty.
 - **Paradigm**: Typography.
 - **Tier**: Tier 1/2 (Variable Fonts).
-- **Signature**: Variable font axes like weight and slant are mapped to a noise function that gives each letter a subtly different "fermentation state." The headlines are never the same twice, reflecting the organic and unpredictable nature of the product.
+- **Signature**: Variable font axes like weight and slant are mapped to a generative function that gives each letter a subtly different "fermentation state." The headlines are never the same twice, reflecting the organic and unpredictable nature of the product.
 
 ### 5. Digital Art Gallery
 - **Brand Metaphors**: Curation, perception shifts, the gallery walk.

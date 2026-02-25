@@ -27,7 +27,7 @@ Headlines should scale organically with the viewport. Use fluid scaling principl
 
 Modern high-end design often signals craftsmanship through controlled imperfection. This differentiates a site from the "too perfect" look of generic AI-generated templates.
 
-- **Film Grain / Noise**: Subtle overlays of noise or grain textures signal organic, non-digital origins. This adds depth and tactile quality to flat surfaces.
+- **Raw Material Textures**: Incorporate textures like rough concrete, raw paper, or woven fabric in background layers or photography treatments to ground the digital experience in the physical world.
 - **Intentional Misalignment**: Elements that slightly overflow their containers or text that starts a few pixels off the grid baseline create visual tension. This feels like a deliberate choice rather than an error.
 - **Raw Material Textures**: Incorporate textures like rough concrete, raw paper, or woven fabric in background layers or photography treatments to ground the digital experience in the physical world.
 - **ASCII / Dithering Aesthetics**: Using dithered images or ASCII art sections signals computational depth and a "lo-fi" sophistication that stands out against polished stock photography.

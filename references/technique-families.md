@@ -57,7 +57,7 @@ Treating letterforms as dynamic, expressive elements rather than static informat
 - **Tier 2 — Kinetic Text Loop**: Text that moves in a continuous, stylized loop. This isn't just a simple marquee; it might follow a complex path, change speed based on scroll, or distort as it moves.
 - **Tier 2 — Text Stroke Drawing**: Animating the outline of a font as if it is being drawn in real-time. This adds a "hand-crafted" or "blueprint" feel to the design.
 - **Tier 3 — MSDF Text Rendering**: Rendering text within a WebGL context using Multi-channel Signed Distance Fields. This allows text to exist in 3D space, respond to lights, and be deformed by shaders without losing sharpness.
-- **Tier 3 — Fluid Text Distortion**: Applying fluid simulation or noise-based shaders to text geometry. The letters wave, break apart, or ripple like water in response to user interaction.
+- **Tier 3 — Fluid Text Distortion**: Applying fluid simulation or displacement shaders to text geometry. The letters wave, break part, or ripple like water in response to user interaction.
 
 ---
 

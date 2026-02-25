@@ -64,7 +64,7 @@ Every value must be purposeful. Use modular scales and mathematical relationship
 Motion should guide the narrative, not just decorate it. Use orchestrated reveals and interactive feedback that feels premium and deliberate.
 
 ### 4. Intentional Imperfection
-Avoid the "perfect" AI look. Introduce film grain, slight misalignments, raw textures, or hand-drawn elements. These signals of human craftsmanship prevent the "AI slop" aesthetic and add character.
+Avoid the "perfect" AI look. Introduce slight misalignments, raw textures, or hand-drawn elements. These signals of human craftsmanship prevent the "AI slop" aesthetic and add character.
 
 ---
 

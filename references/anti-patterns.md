@@ -65,7 +65,7 @@ These patterns appear on fewer than 5% of sites. Using them signals genuine tech
 5.  **FBO (Frame Buffer Object) Particle Systems**: GPU-based particle simulations where particle positions are stored in textures and updated on the GPU each frame. Enables hundreds of thousands of particles at 60fps. Recognizable as the visual signature of elite creative studios.
 6.  **Gaussian Splatting**: 3D scene representation using thousands of Gaussian splats — creates photorealistic 3D environments from photography. Emerging technique (2024-2025) that almost no production sites use yet.
 7.  **Variable Font Axis Mapping**: `font-variation-settings` mapped to scroll position, cursor proximity, or time using CSS custom properties and JavaScript. Each letter "breathes" or responds to input. Completely unlike static typography.
-8.  **Intentional Generative Variation**: Using noise functions, PRNG seeded by session, or time-based algorithms to ensure the site looks slightly different on each visit. Typography, backgrounds, or element positions have controlled randomness.
+**Intentional Generative Variation**: Using PRNG seeded by session, or time-based algorithms to ensure the site looks slightly different on each visit. Typography, backgrounds, or element positions have controlled randomness.
 9.  **WebAudio API Integration**: Ambient sound design that responds to interactions — subtle sonic feedback that reinforces the visual language. Used sparingly (never autoplay), only when sound is part of the brand identity.
 10. **Canvas-Based Custom Text Rendering**: Drawing typography on a Canvas element using custom rasterization. Allows typography to respond to physics, be masked by video, or carry per-pixel shader effects impossible in standard HTML text.
 
