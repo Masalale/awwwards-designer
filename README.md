@@ -11,7 +11,6 @@ Transforms AI agents into elite design architects capable of producing award-win
 
 ### Key Features
 - **🎯 Signature Interaction Invention** — One novel, invented interaction per project (core v5 requirement).
-- **✨ Intentional Imperfection** — Film grain, misalignment, raw textures to avoid "AI slop."
 - **🛡️ Anti-Convergence** — Technique families prevent verbatim code duplication across projects.
 - **📊 3-Tier Complexity** — CSS-only (Tier 1) / GSAP+DOM (Tier 2) / WebGL+Shaders (Tier 3).
 
@@ -48,9 +47,8 @@ references/
 
 Each project requires:
 1. **Signature Interaction** — One invented novel interaction (not from technique families)
-2. **Intentional Imperfection** — Film grain, misalignment, raw textures
-3. **Technique Family Selection** — Choose from 5 families, apply at chosen complexity tier
-4. **Anti-Pattern Awareness** — Avoid Forbidden patterns, minimize Overused patterns, embrace Encouraged patterns
+2. **Technique Family Selection** — Choose from 5 families, apply at chosen complexity tier
+3. **Anti-Pattern Awareness** — Avoid Forbidden patterns, minimize Overused patterns, embrace Encouraged patterns
 
 ## License
 

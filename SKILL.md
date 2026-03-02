@@ -63,8 +63,8 @@ Every value must be purposeful. Use modular scales and mathematical relationship
 ### 3. Motion as Meaning
 Motion should guide the narrative, not just decorate it. Use orchestrated reveals and interactive feedback that feels premium and deliberate.
 
-### 4. Intentional Imperfection
-Avoid the "perfect" AI look. Introduce slight misalignments, raw textures, or hand-drawn elements. These signals of human craftsmanship prevent the "AI slop" aesthetic and add character.
+### 4. Mobile-First Execution
+Design and build for mobile viewports first, then progressively enhance for larger screens. A premium experience that breaks on mobile is not premium — it's incomplete. Touch targets, scroll performance, and typographic hierarchy should be validated on small screens before scaling up.
 
 ---
 
@@ -72,8 +72,8 @@ Avoid the "perfect" AI look. Introduce slight misalignments, raw textures, or ha
 
 - **Framework Agnostic**: Choose the framework that best serves the project's complexity tier and creative ambition.
 - **Tech Stack**: Defer to `references/tech-stack.md` for detailed guidance on animation libraries and performance rules.
-- **Tooling**: TypeScript and Bun are strongly recommended for all tiers to ensure speed and type safety.
-- **Accessibility**: Non-negotiable. Always respect `prefers-reduced-motion` and maintain semantic HTML integrity regardless of visual complexity.
+- **Tooling**: TypeScript and Bun are the standard for all tiers — type safety and execution speed are non-negotiable for premium experiences.
+- **Accessibility**: Respect `prefers-reduced-motion` and maintain semantic HTML integrity regardless of visual complexity.
 
 ---
 
