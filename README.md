@@ -2,7 +2,7 @@
 
 An OpenClaw agent skill for creating Awwwards-caliber web experiences through signature interaction invention and intentional imperfection.
 
-![Skill Version](https://img.shields.io/badge/version-v5.0-blue)
+![Skill Version](https://img.shields.io/badge/version-v5.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## What This Skill Does

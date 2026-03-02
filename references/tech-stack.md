@@ -14,21 +14,30 @@ This guide outlines the technical foundations for building Awwwards-caliber web 
 Choose the framework that best serves the project's complexity tier and creative ambition.
 
 #### Tier 1: CSS & Lightweight
-- **Astro**: Excellent for content-heavy sites and zero-JS delivery. Use islands architecture for isolated interactivity.
-- **SvelteKit**: Offers a highly efficient compiler and built-in transitions, resulting in minimal bundle sizes.
-- **Vite + Vanilla TS**: Provides maximum control and zero framework overhead. Ideal when every byte and millisecond counts.
+- **Astro (Latest 5.x)**: The premier choice for content-heavy sites and zero-JS delivery. Leverage **View Transitions API** for app-like navigation and **Server Islands** for high-performance dynamic components.
+- **Vite + Vanilla TS**: Maximum control and zero framework overhead. Ideal when every byte and millisecond counts.
 
 #### Tier 2: GSAP & DOM
-- **Astro**: Remains a strong choice. Use React or Svelte islands for GSAP-heavy components while keeping the rest of the page static.
-- **Next.js**: Viable for complex applications. Use `"use client"` directives carefully and ensure GSAP contexts are cleaned up on unmount.
-- **SvelteKit**: The `onMount` lifecycle aligns naturally with GSAP initialization patterns.
-- **Vite + Vanilla TS**: Offers the most predictable behavior for complex DOM orchestrations without hydration edge cases.
+- **Astro**: Use React or Svelte islands for interactive components while keeping the core document static.
+- **TanStack Start**: The standard for full-stack, type-safe React applications. Built on TanStack Router with world-class type safety and efficient server functions.
+- **Vite + Vanilla TS**: Predictable behavior for complex DOM orchestrations without hydration edge cases.
 
 #### Tier 3: WebGL, Shaders & Generative
-- **Vite + Vanilla TS**: The preferred choice for maximum performance. Direct control over the WebGL context without framework abstraction overhead.
+- **Vite + Vanilla TS**: Direct control over the WebGL context without framework abstraction overhead.
 - **Astro + React Islands**: Effective for hybrid sites combining standard content with immersive WebGL sections.
-- **Three.js + React Three Fiber (R3F)**: The standard for component-based 3D scenes within the React ecosystem.
-- **Next.js**: Use with caution for WebGL. Utilize dynamic imports with `ssr: false` for all canvas-based components to avoid server-side conflicts.
+- **Three.js + React Three Fiber (R3F)**: Component-based 3D scenes within the React ecosystem (best paired with TanStack Start or Astro).
+
+### 🔄 Framework Synergy: Picking Your Stack
+Choosing between **Astro** and **TanStack Start** depends on the project's primary metaphor:
+
+| Vector | Astro (Latest) | TanStack Start |
+| :--- | :--- | :--- |
+| **Architecture** | MPA (Multi-Page App) + Islands | Full-stack SPA/Hybrid |
+| **Performance** | Zero-JS default, ultra-fast LCP | React-first, powerful hydration |
+| **Interactivity** | Best for isolated "wow" moments | Best for complex, interconnected state |
+| **Data Flow** | **Content Layer** for type-safe data | Unified TanStack Query & Router |
+
+**Rule of Thumb**: Use **Astro** for editorial, brand-heavy, and high-performance storytelling. Use **TanStack Start** for complex applications, dashboards, or logic-heavy creative tools.
 
 ### Framework-Agnostic Rules
 - Initialize scroll and animation libraries only after the DOM is fully ready.
@@ -41,14 +50,14 @@ Choose the framework that best serves the project's complexity tier and creative
 ## 🎨 Styling & Components
 
 ### Styling Strategy
-- **Tailwind CSS**: Preferred for rapid development and design system consistency.
+- **Tailwind CSS**: Efficient for rapid prototyping and design-system consistency. Custom CSS or CSS Modules offer more granular control when the design demands bespoke styling.
 - **Custom Properties**: Use CSS variables for dynamic values that need to be accessed by both CSS and JavaScript (e.g., mouse position, scroll velocity).
 - **Mathematical Spacing**: Derive spacing and typography from mathematical ratios (like the Golden Ratio) for inherent visual harmony.
 - **Fluid Typography**: Implement `clamp()` based typography for seamless scaling across all screen sizes.
 
 ### Component Foundations
-- **shadcn/ui**: A solid starting point for accessible components. Always customize the default styles to match the project's unique aesthetic. Never ship default shadcn styles.
-- **Container Queries**: Use `@tailwindcss/container-queries` for components that need to adapt based on their parent container's size rather than the viewport.
+- **shadcn/ui**: Provides accessible component primitives. Requires heavy visual customization — default styles should not ship.
+- **Container Queries**: Use native CSS `@container` or framework plugins for component-level responsive adaptation.
 
 ---
 
@@ -60,17 +69,28 @@ Choose the framework that best serves the project's complexity tier and creative
 - **Native Scroll-Driven Animations**: Use for hardware-accelerated, scroll-linked effects without JavaScript dependencies.
 
 ### Tier 2: DOM Orchestration
-- **GSAP + ScrollTrigger**: The industry standard for complex, scroll-linked storytelling and timeline sequencing.
-- **SplitType**: Essential for character, word, and line-based text animations.
-- **Lenis**: Recommended for smooth scrolling. It exposes a velocity value that is critical for driving physical simulations and shader distortions.
+- **GSAP + ScrollTrigger**: Mature and widely documented for complex, scroll-linked storytelling and timeline sequencing.
+- **SplitType**: Splits text into animatable spans for character, word, and line-level effects.
+- **Lenis**: Provides smooth scrolling with an exposed velocity value useful for physics-based effects and shader distortions.
 - **Framer Motion (`motion/react`)**: Ideal for React-based interface transitions, gestures, and layout animations.
 
 ### Tier 3: Immersive & Generative
 - **Three.js**: The foundational library for 3D on the web. Provides direct access to scenes, cameras, and shaders.
+- **OGL**: A minimalist, high-performance alternative to Three.js for shader-pure experiences and lightweight 3D.
 - **React Three Fiber (R3F)**: A powerful React reconciler for Three.js, supported by a rich ecosystem like `@react-three/drei`.
 - **Curtains.js / gpu-curtains**: Specialized for synchronizing DOM elements with WebGL planes, enabling shaders on standard HTML content.
 - **Theatre.js**: A professional-grade motion design tool for sequencing complex animations with a visual keyframe editor.
 - **GSAP (at Tier 3)**: Use to orchestrate the DOM and high-level logic while specialized libraries handle the WebGL layer.
+
+---
+
+## 🌎 Physics Engines
+
+Physicality is often the difference between "motion" and "realism."
+
+- **Rapier**: High-performance Rust/WASM physics engine. The preferred choice for complex 3D simulations (Tier 3).
+- **Matter.js**: The industry standard for 2D rigid body physics (Tier 2).
+- **P2.js**: A specialized 2D physics engine optimized for high-performance constraints and top-down mechanics.
 
 ### Shader Resources
 - **GLSL**: The primary language for writing custom vertex and fragment shaders.
