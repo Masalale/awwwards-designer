@@ -37,7 +37,7 @@ Choosing between **Astro** and **TanStack Start** depends on the project's prima
 | **Interactivity** | Best for isolated "wow" moments | Best for complex, interconnected state |
 | **Data Flow** | **Content Layer** for type-safe data | Unified TanStack Query & Router |
 
-**Rule of Thumb**: Use **Astro** for editorial, brand-heavy, and high-performance storytelling. Use **TanStack Start** for complex applications, dashboards, or logic-heavy creative tools.
+**Framework Strategy**: Analyze the project's core metaphor. If the brand demands editorial storytelling with isolated "wow" moments — consider Astro. If the brand demands complex interconnected state with heavy user interaction — consider TanStack. Or choose neither. The framework is a tool, not a constraint.
 
 ### Framework-Agnostic Rules
 - Initialize scroll and animation libraries only after the DOM is fully ready.

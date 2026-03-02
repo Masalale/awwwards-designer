@@ -21,11 +21,18 @@ The era of the "Awwwards Recipe" is over. When every agent uses the same GSAP st
 
 Every project MUST invent ONE novel signature interaction before any standard UI components are built. This interaction is the soul of the site.
 
+**Verification (Required)**: Before writing any component code, document in your work notes:
+1. Brand metaphor → interaction driver mapping (1 sentence)
+2. The "twist" that makes it unrepeatable (1 sentence)
+3. Which technique family you intentionally rejected, and why (1 sentence)
+
+If you cannot document all three, you have not invented a signature interaction — you have copied a pattern.
+
 ### Invention Framework
 1. **Analyze Brand Narrative**: What does this brand feel like? Is it liquid, tectonic, ethereal, or industrial?
-2. **Choose a Paradigm**: Select a primary driver—Cursor, Scroll, Loading, Hover, Typography, or Layout.
-3. **Select a Complexity Tier**: Choose Tier 1, 2, or 3 based on project constraints.
-4. **Combine + Twist**: Merge the paradigm with the narrative. Example: A "tectonic" brand might use a scroll interaction where sections don't just slide, but "fracture" and "re-align" based on scroll velocity.
+2. **Choose a Paradigm**: Select a primary driver—Cursor, Scroll, Loading, Hover, Typography, or Layout. **Justification required**: Write 1 sentence explaining why this driver matches the brand's core metaphor. No justification = generic design.
+3. **Select a Complexity Tier**: Choose Tier 1, 2, or 3 based on project constraints. **Constraint required**: Write 1 sentence explaining why you rejected the other tiers. No rejection = lazy execution.
+4. **Combine + Twist**: Merge the paradigm with the narrative. Add one unexpected constraint. **Twist required**: Document what makes this interaction impossible to copy.
 
 ### Inspiration (Do Not Copy)
 - **Kinetic Mirroring**: Each movement creates a delayed echo of preceding elements.
@@ -36,7 +43,8 @@ Every project MUST invent ONE novel signature interaction before any standard UI
 
 ## 🏗️ 3-Tier Complexity Model
 
-Self-select a tier based on the project context and technical requirements.
+Self-select a tier based on the project context and technical requirements. **Justification required**: Document why this tier serves the brand metaphor better than the other two.
+Tier selection is not about difficulty — it's about creative constraint. Tier 1 forces CSS-only creativity. Tier 2 enables physics-based orchestration. Tier 3 unlocks shader magic. Choose one, then justify why the others were rejected.
 
 ### Tier 1 — CSS & Lightweight
 **Selection**: Content-heavy sites, accessibility-critical projects, or when fast Time-to-Interactive is paramount.

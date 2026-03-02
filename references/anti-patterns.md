@@ -40,7 +40,7 @@ These patterns signal that the AI agent fell back on its statistical average. Th
 
 ## TIER 2 — OVERUSED (Use Only If Deeply Reinvented)
 
-These were innovative patterns 2-3 years ago. Today they are recognizable defaults within the "Awwwards-inspired" space. They are NOT forbidden, but using them in their standard form signals derivative design. Each may be redeemed by combining with unexpected constraints.
+These patterns are recognizable "Awwwards-inspired" clones. Using them in standard form signals derivative design. Do not use — invent something new.
 
 | Pattern | Standard Form (Overused Signal) | Reinvention Direction |
 | :--- | :--- | :--- |
