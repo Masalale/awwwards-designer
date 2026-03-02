@@ -21,3 +21,4 @@ node_modules/
 
 # Agent Use
 .sisyphus
+AGENTS.md
