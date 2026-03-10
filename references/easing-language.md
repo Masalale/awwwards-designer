@@ -1,27 +1,17 @@
 # Easing Language: Motion as Brand Voice
 
-> **Invariant principle:** Easing is not a technical setting — it is the brand's physical personality expressed through motion. Two sites with identical content and identical layouts feel fundamentally different if their easing curves are different. The curve is the brand's handwriting.
->
-> **Current-era note:** The specific cubic-bezier values and library names below reflect current tools. As animation tooling evolves, the principle — derive the curve from the physical metaphor, name it, use it everywhere — remains.
-
----
-
 ## What Easing Actually Controls
 
 A cubic-bezier curve has four values: `(x1, y1, x2, y2)`.
 
-- **x1, y1** — controls the *start* of the motion (how it leaves the initial state)
-- **x2, y2** — controls the *end* of the motion (how it arrives at the final state)
+- **x1, y1** — controls the *start* of the motion (departure from initial state)
+- **x2, y2** — controls the *end* of the motion (arrival at final state)
 
 ```
 cubic-bezier(x1, y1, x2, y2)
              ↑         ↑
          departure   arrival
 ```
-
-The *departure* is the first impression. The *arrival* is the feeling it leaves.
-
-A brand with a slow departure and a decisive arrival feels authoritative. A brand with a fast departure and a gentle arrival feels energetic but considerate. These are not aesthetic choices — they are the brand's physical personality in motion.
 
 ---
 
@@ -176,7 +166,7 @@ stagger: (index, target) => {
 
 ## The `power2.out` Problem
 
-`ease: 'power2.out'` is the Poppins of easing. It is in every GSAP tutorial, every starter kit, every copied snippet. It communicates nothing about the brand. It is the absence of an easing decision.
+`ease: 'power2.out'` is a default, not a decision. Every match in your codebase is a missed opportunity to make the motion feel like the brand. Replace all instances with your named brand ease.
 
 **Audit your animation code:**
 ```

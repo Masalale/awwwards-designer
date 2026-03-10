@@ -1,10 +1,6 @@
 # Pre-Launch Audit: Awwwards-Critical Checks
 
-> **Invariant principle:** These checks exist because they are the specific places where even competent execution breaks down under build pressure. They are what Awwwards judges notice before they notice anything else.
->
-> **Current-era note:** If you know of better ways to verify any of these checks than what's described, use your knowledge. The principle — that each of these must be true — is non-negotiable.
-
-Run this audit at Step 8. Every unchecked item is a reason to return to that section. Do not declare the site ready until the list is clean.
+Run this audit at Step 12. Every unchecked item is a reason to return to that section. Do not declare the site ready until the list is clean.
 
 ---
 

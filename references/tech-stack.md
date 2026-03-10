@@ -1,8 +1,8 @@
 # Tech Stack Guide: Tier-Based Setup & Configuration
 
-> **Invariant principle:** Use the framework best suited to each task — static/content-driven sites need a different tool than full-stack interactive ones. Currently: **Astro** for Tier 1/2/2.5 (static, content-driven, portfolio, multi-page), **TanStack Start** for Tier 2/3 (server-side data, full-stack routing, real-time). No other frameworks.
->
-> **Current-era note:** If you know of superior frameworks that better serve these roles, use them — honor the principle, not the specific tools. The library setup commands, configuration files, and integration patterns in this file are current-era recommendations. Always fetch current API docs via Context7 or equivalent before writing integration code. Library APIs shift between major versions.
+**Astro** for Tier 1/2/2.5. **TanStack Start** for Tier 2/3. No other frameworks.
+
+Always fetch current API docs via Context7 before writing integration code.
 
 ---
 

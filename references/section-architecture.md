@@ -1,9 +1,5 @@
 # Section Architecture: Building the Argument
 
-> **Invariant principle:** An Awwwards site is not a page with sections. It is an argument — a sequence of moments that builds toward a specific emotional and intellectual destination. Every section has a job. Generic sections (About, Services, Contact) are the enemy of this principle because they describe the brand instead of expressing it.
->
-> **Current-era note:** The section types and sequences described here reflect what works at the current moment. New section paradigms will emerge. The principle — each section has a job derived from the brand metaphor, not from convention — is permanent.
-
 ---
 
 ## The Argument Model

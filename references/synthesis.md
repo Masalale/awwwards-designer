@@ -1,9 +1,5 @@
 # Synthesis: From Invention to Execution
 
-> **Invariant principle:** A great concept built with generic decisions produces a generic site. Synthesis is the translation layer that ensures every execution decision — system architecture, easing, hero structure, section rhythm, motion timing — derives from the brand metaphor and signature interaction, not from defaults.
->
-> **Current-era note:** The specific libraries and APIs referenced here reflect the current Tier 1/2/2.5/3 stack. The principle — every decision must trace back to the invention — is permanent.
-
 ---
 
 ## The Engine: How Every Awwwards Site Is Actually Built
@@ -361,7 +357,7 @@ vec2 uv = (vUv - 0.5) * 0.85 + 0.5;
 uv += parallaxOffset;  // now has room to shift without clipping
 ```
 
-**Why this matters:** Parallax, hover-shift, and cursor-driven effects clip at edges if there's no buffer. The clip is instantly visible as amateur work. Build the buffer into the initial dimensions — never try to constrain within bounds.
+Build the buffer into the initial dimensions — never try to constrain within bounds after the fact.
 
 ---
 

@@ -1,8 +1,6 @@
 # Aesthetic Foundations: Design System & Premium Fundamentals
 
-> **Invariant principle:** Typography must create unambiguous hierarchy. Visual consistency requires systematic choices, not ad-hoc decisions. **Colors are user-owned — this file does not provide color guidance.** Wait for the user to supply the palette.
->
-> **Current-era note:** The specific font recommendations, golden ratio scale values, and CSS implementation patterns in this file reflect current practice. If you know of superior typefaces, better scaling systems, or more efficient CSS approaches, use them — honor the principles (clear hierarchy, systematic consistency), not the specific values.
+**Colors are user-owned — this file does not provide color guidance.** Wait for the user to supply the palette. Do not invent, derive, or fill color variables.
 
 ---
 
@@ -260,15 +258,12 @@ import { ArrowRight, Menu, X, ChevronDown } from 'lucide-react';
 }
 ```
 
-### Taste Principles
+### Rules
 
-**Stroke weight follows size.** As icons get larger, reduce stroke width. As icons get smaller, increase it. This preserves optical weight consistency — the same visual "thickness" at all sizes.
-
-**Icons as accents, not crutches.** A premium site uses icons sparingly. An arrow to indicate direction, a close mark on a modal, a menu icon on mobile. If you're using icons to explain what a button does, the button label isn't clear enough.
-
-**Never emoji as interface icons.** Emoji rendering is inconsistent across OS and theme modes. A 🏠 on macOS and a 🏠 on Android are visually different objects. Lucide's house icon is identical everywhere.
-
-**Custom icon gap.** If Lucide doesn't have a specific icon you need, draw a minimal inline SVG that matches Lucide's system: `stroke-width="1.5"`, `stroke-linecap="round"`, `stroke-linejoin="round"`, no fill, viewBox `0 0 24 24`. This keeps the visual system intact rather than introducing a foreign object.
+- Stroke weight follows size: larger icons use `stroke-width: 1`, smaller icons use `stroke-width: 2`
+- Use icons sparingly — navigation, close marks, directional arrows. Never as explanations for unclear button labels
+- Never emoji as interface icons
+- If Lucide doesn't have the icon you need: draw a minimal inline SVG matching Lucide's system (`stroke-width="1.5"`, `stroke-linecap="round"`, `stroke-linejoin="round"`, no fill, `viewBox="0 0 24 24"`)
 
 ---
 
@@ -306,23 +301,6 @@ h2, h3 {
 h1 {
   line-height: 1.05;  /* Aggressive, powerful */
 }
-```
-
-### Visual Line Height Testing
-
-```
-Body (1.6):       "The quick brown fox jumps over the lazy dog"
-                   With generous spacing for comfortable reading.
-                   Multiple paragraphs feel well-spaced.
-
-Heading (1.2):    "The Quick Brown Fox"
-                  Tighter, more controlled feeling.
-
-Display (1.1):    "Extraordinary Design"
-                 Very tight, premium, impactful.
-
-Hero (1.05):      "Extraordinary Design Mastery"
-               Extreme tightness, powerful, bold.
 ```
 
 ---

@@ -1,24 +1,5 @@
 # The Invention Gate: Mandatory Pre-Code Framework
 
-> **Invariant principle:** AI always converges to safe, familiar patterns. The Invention Gate is the structural mechanism that blocks this convergence. It is permanently necessary regardless of how capable future agents become — because the pull toward safe patterns increases with training data, not decreases.
->
-> **Current-era note:** The paradigms, metaphor types, and gate format described here reflect current understanding of what produces unrepeatable interactions. If you know of a better framework for extracting brand-specific differentiation, use it — the principle is what matters.
-
-## Gate Philosophy: Structure Blocks Gravitational Pull
-
-AI agents have been trained on millions of websites. That training creates a gravitational pull toward safe patterns. When asked to build a website, the default response is to reach for:
-
-- GSAP y: 40px stagger reveal on text
-- mix-blend-mode: difference cursor
-- Standard magnetic buttons
-- Parallax background images
-- Basic split-text character stagger
-- Blur backdrop navigation
-
-These patterns work. They're proven. They're in the training data millions of times. The agent's internal reward signal says: "These are safe choices."
-
-The Invention Gate is a structural checkpoint that blocks this pull. It forces specificity before implementation. The gate is not a creative exercise. It is not inspirational. It is a **mandatory document** that must be written and saved before a single line of code is written.
-
 You cannot proceed to design or code until:
 
 1. Three brand metaphors are extracted (not invented—extracted from the brief)
@@ -607,14 +588,4 @@ construction system.
 
 ## When the Gate Blocks You
 
-If you find yourself unable to complete the gate—unable to articulate a twist, stuck between paradigms, rejecting every idea—stop and return to the brief.
-
-The gate isn't broken. You haven't extracted the metaphors deeply enough.
-
-Re-read the client's language. What words repeat? What visuals appear in their reference folder? What's the core tension in their business?
-
-Good gates take 2-3 hours. Great gates take a full day. Bad gates happen when you rush them.
-
-The gate is the most important part of the entire project. Everything else follows from it.
-
-Don't start design until the gate is written and signed off.
+If you cannot complete the gate — cannot articulate a twist, stuck between paradigms — return to the brief. Re-read the client's language. What words repeat? What's the core tension in their business? The metaphors have not been extracted deeply enough. Do not start design until the gate is written.

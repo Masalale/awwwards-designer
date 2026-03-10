@@ -1,26 +1,8 @@
 # Page Transitions: Barba.js + GSAP
 
-> **Invariant principle:** The difference between a website and a web experience is what happens when you navigate between pages. Seamless, choreographed transitions signal intentionality. This principle applies regardless of which library or browser API implements it.
->
-> **Current-era note:** This file describes the Barba.js + GSAP pattern, which is current best practice for DOM-swap page transitions. The View Transitions API is an emerging native alternative. If you know of a superior implementation that produces the same seamless result, use it — honor the principle (no white flash, no full reload, intentional choreography), not the specific library.
+## How It Works
 
-## Why Page Transitions Matter
-
-The difference between a website and a web experience is what happens when you click a link. Default browser navigation — white flash, full page reload, content popping in — signals "standard website." Smooth, choreographed transitions between pages signal "crafted experience."
-
-Studios like Osmo (Dennis Snellenberg & Ilja van Eck) have built 35+ Awwwards SOTD winners using the Barba.js + GSAP combination as their foundation. The pattern is so consistent across winners that its absence is now conspicuous to judges.
-
-## Architecture: How It Works
-
-Barba.js is a transition library, not an animation library. It handles:
-- Intercepting link clicks (prevents default browser navigation)
-- Fetching the new page content via AJAX
-- Swapping the DOM container with the new page's content
-- Providing lifecycle hooks where you plug in your GSAP animations
-
-GSAP handles the actual visual transitions — the wipes, fades, morphs, and reveals.
-
-The result: your site behaves like a Single Page Application without requiring a JavaScript framework. The DOM updates, the URL changes, the browser history works — but there's never a white flash or full reload.
+Barba.js intercepts link clicks, fetches new page content via AJAX, swaps the DOM container, and provides lifecycle hooks (`leave`, `enter`, `after`) where GSAP animations are plugged in. The result: no white flash, no full reload, choreographed transitions between every page.
 
 ## CDN Setup
 

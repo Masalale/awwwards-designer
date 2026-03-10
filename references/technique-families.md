@@ -1,9 +1,5 @@
 # The 5 Technique Families: Tier-Based Implementation Patterns
 
-> **Invariant principle:** Every signature interaction lives within a paradigm — Cursor, Scroll, Loading, Hover, Typography, or Layout. The paradigm is the medium; the signature interaction is the message. Choose one paradigm and invent within it.
->
-> **Current-era note:** The code examples, library choices, and tier implementations in this file reflect current best practice. If you know of superior techniques for achieving the same effects, use them — honor the paradigm and the brand-to-interaction mapping, not the specific library. The classification of what's Tier 1 vs. Tier 2 vs. Tier 3 may shift as technology evolves.
-
 Each technique family is a paradigm (Cursor, Scroll, Loading, Hover, Typography) with three tiers of increasing complexity. Within each family, choose your tier based on project scope and technical confidence.
 
 ---

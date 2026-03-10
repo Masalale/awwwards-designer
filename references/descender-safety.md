@@ -1,40 +1,6 @@
 # Descender Safety Protocol
 
-> **Invariant principle:** Descenders (g, y, q, p) extend below the typographic baseline. This is a font metric reality, not a current-era trend. Any layout that clips the content box at the baseline will sever them. This protocol is permanently necessary.
->
-> **Current-era note:** The canvas measurement technique and CSS `padding-bottom` approach described here are current best practice. If future browsers or CSS specifications offer native descender clearance measurement, use them — the principle (always provide clear headroom below display text) is non-negotiable.
-
-## The Problem: Why Descenders Disappear
-
-Descender clipping (letters g, y, q, p cut off at the bottom) is the most consistent visual tell of non-professional web work. It happens for mechanical reasons that seem impossible to debug unless you know where to look.
-
-### Root Cause 1: Font Metric Tables Disagree
-
-Font files contain multiple metric tables that store different values for line height and descent:
-
-- **hhea table:** Horizontal header metrics (MacOS standard)
-- **OS/2 typo:** Typographic metrics (modern, recommended)
-- **OS/2 win:** Windows-specific metrics (legacy, conservative)
-
-Different browsers pick different tables. Safari often uses hhea. Chrome uses OS/2 typo. Firefox uses OS/2 win. The same font renders with different descender depth in different browsers—and the font's descender might extend 15% beyond what `line-height: 1.1` accounts for.
-
-At display scale (48px+), this difference becomes visible.
-
-### Root Cause 2: SplitText Wraps Lines in Overflow-Hidden Divs
-
-When you use GSAP's SplitType to split text by word or character, it wraps each line in a `<div style="overflow: hidden">`. The div's height is calculated as `line-height * font-size`. But the descender extends BELOW that box.
-
-A 100px line of text with `line-height: 1.1` gets a wrapper div 110px tall. The font's actual descender (measured from baseline) might be 18px deep. The descender extends 8px past the bottom edge of the div. Result: clipped g, y, q, p.
-
-### Root Cause 3: Hero Sections With Overflow-Hidden
-
-Large hero sections often use `overflow: hidden` to contain child elements or create a framing effect. When that hero contains text at 72px+ scale, the text's descenders extend past the section's bottom edge. Clipped.
-
-### Root Cause 4: No Visual Validation Loop
-
-Agents declare design done without rendering and checking at actual viewport size. The design looks correct in the comp. The code looks correct in the editor. Then you open the live site and descenders are gone—but by then it's been deployed.
-
----
+# Descender Safety Protocol
 
 ## The Canvas Measurement Technique
 
