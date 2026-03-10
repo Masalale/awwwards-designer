@@ -1,54 +1,95 @@
-# 🏆 Awwwards Designer
+# Awwwards Designer
 
-An OpenClaw agent skill for creating Awwwards-caliber web experiences through signature interaction invention and intentional imperfection.
+An AI agent skill for building websites that win or get nominated for Awwwards SOTD, SOTM, or SOTY.
 
-![Skill Version](https://img.shields.io/badge/version-v5.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## What This Skill Does
 
-Transforms AI agents into elite design architects capable of producing award-winning websites autonomously and efficiently. It prioritizes executing high-quality code over bureaucratic planning, with a focus on inventing novel interactions and preventing design convergence.
+Structures AI agents to produce award-winning web experiences by forcing genuine invention over safe, familiar patterns. The core mechanism is the **Invention Gate** — a mandatory checkpoint that extracts brand metaphors and commits to a signature interaction before any code is written.
 
-### Key Features
-- **🎯 Signature Interaction Invention** — One novel, invented interaction per project (core v5 requirement).
-- **🛡️ Anti-Convergence** — Technique families prevent verbatim code duplication across projects.
-- **📊 3-Tier Complexity** — CSS-only (Tier 1) / GSAP+DOM (Tier 2) / WebGL+Shaders (Tier 3).
+**Supports:** Claude Code (`~/.claude/skills/`), OpenClaw (`~/.openclaw/skills/`), and any agent that reads a `SKILL.md` manifest.
 
 ## Installation
 
 ```bash
-git clone https://github.com/masalale/awwwards-designer.git ~/.config/awwwards-designer
+git clone git@github.com:Masalale/awwwards-designer.git ~/.agents/skills/awwwards-designer
 ```
 
-## Usage
+Then symlink into your agent's skills directory:
 
-When activated by your AI agent, use natural language triggers like:
-- *"Build a portfolio website."*
-- *"Create an Awwwards-caliber landing page."*
-- *"Design an immersive 3D experience."*
+```bash
+# Claude Code
+ln -s ~/.agents/skills/awwwards-designer ~/.claude/skills/awwwards-designer
 
-The agent will automatically determine the best approach across frameworks (Astro, Next.js, SvelteKit, etc.) and execute immediately, pulling parametric design constraints, technique families, and creative direction to deliver production-ready code.
+# OpenClaw
+ln -s ~/.agents/skills/awwwards-designer ~/.openclaw/skills/awwwards-designer
+```
 
 ## Skill Architecture
 
 ```
-SKILL.md                              # Main manifest
+SKILL.md                        # 9 Hard Stops + 12-step execution sequence
 references/
-├── signature-invention.md            # 4-step invention framework for novel interactions
-├── aesthetic-foundations.md          # Generative typography, palette, and composition
-├── technique-families.md             # 5 interaction families × 3 complexity tiers
-├── anti-patterns.md                  # 3-tier pattern classification
-└── tech-stack.md                     # Framework-agnostic stack guide (Tier 1/2/3)
+├── invention-gate.md           # Mandatory brand metaphor extraction + paradigm selection
+├── synthesis.md                # INVENTION.md → binding execution decisions
+├── section-architecture.md     # Section sequence as narrative argument
+├── aesthetic-foundations.md    # Typography system, layout principles, animation timing
+├── easing-language.md          # Brand easing curve derivation
+├── technique-families.md       # Interaction families × complexity tiers with code examples
+├── anti-patterns.md            # Forbidden patterns, overused patterns, encouraged patterns
+├── tech-stack.md               # Astro / TanStack Start setup, Lenis + ScrollTrigger sync
+├── page-transitions.md         # Barba.js + GSAP transitions, FLIP shared elements
+├── descender-safety.md         # Canvas measurement, CSS clearance system
+└── audit.md                    # 13 Awwwards-critical pre-launch checks
 ```
 
-## Philosophy
+## How It Works
 
-**v5 Revolution:** Replaced prescriptive code recipes with a Technique Families system to prevent design convergence. The root cause of convergence was verbatim code snippets causing Claude Opus 4.6 and Gemini 3.1 Pro to produce near-identical websites.
+The skill enforces a 12-step execution sequence. Steps cannot be skipped.
 
-Each project requires:
-1. **Signature Interaction** — One invented novel interaction (not from technique families)
-2. **Technique Family Selection** — Choose from 5 families, apply at chosen complexity tier
-3. **Anti-Pattern Awareness** — Avoid Forbidden patterns, minimize Overused patterns, embrace Encouraged patterns
+**Steps 1–2: Invention Gate + Color**
+The agent reads `references/invention-gate.md`, extracts three brand metaphors, selects one signature interaction paradigm from six (Cursor, Scroll, Loading, Hover, Typography, Layout), documents the twist, and writes `INVENTION.md` to the project root. No code before this file exists. Colors are proposed via the `brand-color-psychology` skill and confirmed by the user — never invented by the agent.
+
+**Steps 3–5: Synthesis + Architecture + Design System**
+INVENTION.md decisions are translated into binding execution choices (lerp factor, easing curve, hero structure, scroll phase ratios). Section sequence is built as a narrative argument from the brand metaphor. Typography and layout system established mobile-first at 375px.
+
+**Steps 6–8: Build**
+Framework scaffolded (Astro or TanStack Start — no other options). Full page structure built before any interaction code. Then the signature interaction is implemented as a single engine: Lenis → gsap.ticker → outputs.
+
+**Steps 9–12: Validation**
+Anti-pattern check, page transitions (if multi-page), descender safety on all display text >48px, pre-launch audit.
+
+## Awwwards Scoring
+
+**Design 40% · Usability 30% · Creativity 20% · Content 10%**
+
+Design and Usability form 70% of the score and must be flawless before Creativity is evaluated. The skill builds from the base up — not from the signature interaction outward.
+
+## Hard Stops
+
+The skill has 9 invariant rules that cannot be overridden by project context:
+
+1. No code before `INVENTION.md` is written
+2. No single HTML file output — Astro or TanStack Start only
+3. One icon system throughout (Lucide recommended)
+4. `overflow: visible` on all display text — never `overflow: clip`
+5. `dvh` not `vh` for full-screen sections
+6. Never override native touch scroll
+7. Always fetch current API docs before writing integration code
+8. Descender safety protocol mandatory for all text >48px
+9. Read `references/anti-patterns.md` before design begins
+
+## Tech Stack
+
+Output is **Astro** (Tier 1/2/2.5) or **TanStack Start** (Tier 2/3). No other frameworks. No single HTML files.
+
+| Tier | Stack | When |
+|------|-------|------|
+| 1 | CSS scroll-driven animations, vanilla JS | Innovation is visual, not interactive |
+| 2 | GSAP + ScrollTrigger + Lenis + SplitType | Motion is the signature moment |
+| 2.5 | Tier 2 + CSS 3D or single Three.js mesh | Brand metaphor requires physical depth |
+| 3 | Three.js / WebGL / React Three Fiber | Brand requires 3D, generative, or physics |
 
 ## License
 
