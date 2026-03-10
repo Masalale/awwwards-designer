@@ -1,5 +1,9 @@
 # The Invention Gate: Mandatory Pre-Code Framework
 
+> **Invariant principle:** AI always converges to safe, familiar patterns. The Invention Gate is the structural mechanism that blocks this convergence. It is permanently necessary regardless of how capable future agents become — because the pull toward safe patterns increases with training data, not decreases.
+>
+> **Current-era note:** The paradigms, metaphor types, and gate format described here reflect current understanding of what produces unrepeatable interactions. If you know of a better framework for extracting brand-specific differentiation, use it — the principle is what matters.
+
 ## Gate Philosophy: Structure Blocks Gravitational Pull
 
 AI agents have been trained on millions of websites. That training creates a gravitational pull toward safe patterns. When asked to build a website, the default response is to reach for:
@@ -67,15 +71,31 @@ For each metaphor, answer a specific question:
 - Your gut impression (what's the first feeling, not the thought)
 - Competitor positioning (what do other brands in this space feel like, so this one can be the inverse)
 
+**Surface detail vs. deep metaphor — the most common extraction failure:**
+
+Agents consistently latch onto a single concrete detail from the brief and mistake it for the metaphor. This produces a paradigm choice that fits the detail but misses the brand's essential nature.
+
+Example of the failure:
+- Brief says: "performances begin in total silence and stillness for minutes before anything moves"
+- Agent extracts: *"the brand is about stillness before motion"* → chooses Loading/Reveal (one-time entry ritual)
+- What was actually there: *"the brand is kinetic memory — the body carries what the mind cannot speak"* → Cursor (continuous physical expression throughout the entire experience)
+
+The detail (stillness before motion) is a feature of one performance. The metaphor (the body as memory and expression) is the brand's essential nature. Loading/Reveal uses the detail once and discards it. Cursor expresses the metaphor on every interaction.
+
+**The test for deep extraction:** Ask — "does this metaphor describe what the brand *does once* or what the brand *is continuously*?" If the metaphor only maps to a single moment, you've extracted a feature. Keep going until you find what the brand is at its core.
+
 ### Step 2: Choose Interaction Paradigm (ONE)
 
 You will choose ONE of these six paradigms. Your signature interaction will live within this paradigm.
 
+**One paradigm only — no hybrids.** Combining two paradigms ("Scroll + Hover") is not innovation — it is indecision. A hybrid splits implementation focus and produces a signature interaction too vague to build. If your brand seems to need two paradigms, you haven't found the right one. The correct paradigm will contain multitudes on its own. Commit to one.
+
 **Paradigm 1: Cursor**
 - The pointer itself becomes expressive
 - How the cursor moves, changes shape, responds to proximity, trails, distorts
-- Best for: brands that want to signal constant engagement, precision, playfulness
+- Best for: brands where the act of navigating IS the brand experience — agencies, studios, brands where every gesture is expressive
 - Example: luxury watchmaker's cursor rotates like watch hands based on mouse position
+- Note: underused. Agents consistently default away from this paradigm. If the brand's emotional trigger involves precision, agency, performance, or play — seriously evaluate Cursor before dismissing it.
 
 **Paradigm 2: Scroll**
 - Content movement through time becomes the signature moment
@@ -98,8 +118,9 @@ You will choose ONE of these six paradigms. Your signature interaction will live
 **Paradigm 5: Typography**
 - Text itself becomes the medium of expression
 - How text moves, breathes, scrambles, transforms, changes weight/width based on interaction
-- Best for: editorial sites, manifesto brands, sites where copy is as important as imagery
+- Best for: editorial sites, manifesto brands, publishing houses, brands where language is the product — anywhere the written word carries more weight than imagery
 - Example: variable font weight increases as you scroll through a section (building momentum)
+- Note: underused. Agents consistently default away from this paradigm. If the brand's identity lives in language, time, continuity, or documentation — seriously evaluate Typography before dismissing it.
 
 **Paradigm 6: Layout**
 - Space itself transforms as the user interacts or scrolls
@@ -107,40 +128,26 @@ You will choose ONE of these six paradigms. Your signature interaction will live
 - Best for: architecture firms, construction companies, spatial experiences
 - Example: portfolio items aren't cards that zoom—they're architectural blueprints that collapse into single lines, then expand into full sections
 
-**How to choose:**
-- Which paradigm does your brand metaphor naturally point toward?
-- Which interaction would make someone say "I've never seen that before"?
-- Which paradigm can you execute at your chosen complexity tier without faking it?
-- Which would make returning to the site rewarding (not just loading it once)?
+**How to choose — mandatory rejection discipline:**
 
-### Step 3: Select Complexity Tier & Output Format
+Before locking in a paradigm, you must explicitly reject at least 3 of the remaining 5. Write a one-line reason for each rejection. This is not optional. An agent that picks the first paradigm that fits has not done the gate — it has bypassed it.
 
-Based on your brand ambition and timeline, choose your technical ceiling. Then choose your output format.
+**Rejections must be paradigm rejections** — from the 6 options above (Cursor, Scroll, Loading/Reveal, Hover, Typography, Layout). Rejecting specific visual styles ("binary code rain," "matrix text," "parallax") does not count. Those are aesthetic choices within a paradigm, not paradigm rejections. You must reject the paradigm itself and explain why the brand's essential nature makes that paradigm the wrong container.
 
-**Tier 1: CSS + Lightweight**
-- No GSAP, no Three.js — pure CSS scroll-driven animations, variable fonts, clip-path reveals
-- Output: Single HTML file (CDN imports if needed) or lightweight static generator
-- Timeline: ~1 week
-- Technical ambition: High-confidence execution of elegant, simple interactions
-- Mobile: Full mobile support expected — Tier 1 has no excuse for mobile gaps
+Work through all six and eliminate by reasoning:
+- Which paradigms don't fit because the brand's emotional trigger is wrong for them?
+- Which paradigms would make the interaction feel like the agent's choice, not the brand's nature?
+- Which paradigms have been overused for this brand archetype (architecture = scroll, agencies = loading — resist the obvious)?
 
-**Tier 2: GSAP + DOM**
-- GSAP, ScrollTrigger, SplitType, Lenis (`smoothTouch: false`), Barba.js if multi-page
-- Output: Single HTML file for single-page; plain HTML files + shared JS/CSS for multi-page; Astro if component reuse is needed
-- Timeline: ~2 weeks
-- Technical ambition: Sophisticated motion, text animation, scroll-based orchestration, page transitions
-- Mobile: Every hover effect needs a touch equivalent or graceful absence; no horizontal scroll traps on mobile
+Only after eliminating 3+ with documented reasons can you commit to one.
 
-**Tier 3: WebGL + Shaders**
-- Three.js or vanilla WebGL, GLSL shaders, FBO particles, WebAudio, Theatre.js optional
-- Output: Single file for shader-only hero; React Three Fiber + framework (Astro, Next.js) only when component complexity demands it
-- Timeline: 3+ weeks
-- Technical ambition: Signals deep technical prowess, pushing browser capabilities
-- Mobile: **Not optional.** Every Tier 3 project needs a mobile fallback — simpler shader, static gradient, or CSS animation. Use `matchMedia('(pointer: coarse)')` to branch. Judges test on phones.
+Ask yourself the commitment question: "If this brand were a different brand — a competitor, a different industry — could this same paradigm choice still make sense?" If yes, you haven't found the right one yet.
 
-**Output format decision rule:** Start with single-file. Move to multi-page only when you need page transitions (Barba.js). Move to a framework only when component reuse across 10+ pages or dynamic data demands it. Judges see your output, not your build tools.
+### Step 3: Select Complexity Tier
 
-If you're unsure on tier, choose Tier 2. It hits the premium bar without overextending.
+Based on your brand ambition and the metaphors extracted in Steps 1 and 2, choose your technical ceiling: Tier 1, Tier 2, Tier 2.5, or Tier 3. If you're unsure, choose Tier 2 — it hits the Awwwards bar without overextending.
+
+For decision criteria, setup instructions, and bundle budgets: see `references/tech-stack.md`. For stack choice: the project uses **Astro** (Tier 1/2/2.5) or **TanStack Start** (Tier 2/3).
 
 ### Step 4: Combine & Twist
 
@@ -150,6 +157,21 @@ Now combine your metaphors, paradigm choice, and tier selection. Then add the tw
 ```
 [Paradigm] + [Material Metaphor] + [Unexpected Medium] = Signature Interaction
 ```
+
+**Usability gate — automatic disqualifiers. If any apply, the twist FAILS. Rewrite it.**
+
+These are not judgment calls. If your twist contains any of the following, it is disqualified — regardless of how well the metaphor maps:
+
+- **Any delay before content is accessible that exceeds 4 seconds** — loading sequences, reveals, or rituals beyond 4 seconds require user consent (a "skip" or "enter" option). An unskippable wait of any duration longer than 4 seconds is hostile UX. "The brand is about patience" does not override this. The metaphor is right; the expression is wrong. Find another expression.
+- **Refresh resets meaningful state** — if a browser refresh restarts a reveal, erases progress, or breaks the site, the interaction penalizes a standard browser action. Refreshing is not an error.
+- **Content locked behind interaction completion** — if the user must complete an animation, hover sequence, or loading ritual before the page's primary content is accessible, the gate fails. Interactions enhance content; they do not gatekeep it.
+- **Audio that plays without explicit user action** — browsers block autoplay. Any twist requiring audio to start without a user gesture will silently fail in production. Audio must be opt-in with a visible, persistent toggle.
+- **Hover as the only path to information** — hover is absent on touch devices. Any information conveyed exclusively through hover is inaccessible on mobile (30%+ of traffic).
+- **Intentional technical degradation as a design concept** — deliberately broken image loading, artificial latency, raw network jank, or simulated failure states framed as "authenticity" or "rawness." This always reads as broken, not intentional, to a judge or user who doesn't know the concept. Technical degradation cannot be communicated through itself — it needs a frame, and on the web there is no frame. A documentary photography site with jagged image pop-in reads as poor performance, not editorial honesty. The metaphor (no mediation between image and viewer) is valid; the expression (broken loading) is not. Find the expression in layout, sequence, or framing — not in making the browser behave badly.
+
+If your twist triggers any disqualifier: keep the metaphor, change the expression. The brand insight is valid; the interaction form is not.
+
+---
 
 **What is the twist?**
 
@@ -189,46 +211,11 @@ Examples:
 
 ---
 
-## The Pattern Blacklist: Automatic Rejection
+## The Pattern Blacklist
 
-If your signature interaction uses any of these patterns WITHOUT a documented twist, it fails the gate and must be reinvented:
+See **`references/anti-patterns.md`** for the complete Pattern Blacklist — forbidden patterns, overused patterns requiring a documented twist, and encouraged patterns that signal technical ambition.
 
-**FORBIDDEN (No exceptions):**
-- GSAP y: 40px stagger reveal on heading text (too common)
-- mix-blend-mode: difference cursor (instant tell of template work)
-- Standard magnetic button (every agency site)
-- Mesh gradient background (2024 cliché)
-- Parallax background image (2015 web)
-- Basic SplitType character stagger with identical timing (overplayed)
-- Blur backdrop navigation panel (Tailwind template default)
-- Scroll-triggered fade opacity reveal (invisible when done right, overused when not)
-
-**Why forbidden:** These patterns have been executed thousands of times across the web. Judges have seen them before. If your site uses them without innovation, the site looks like everyone else's.
-
-**OVERUSED (Requires documented twist to use):**
-- Mix-blend-mode: difference cursor → Reinvent as context-aware cursor that changes based on element type
-- GSAP y: 40px stagger → Reinvent as directional reveals where direction corresponds to brand meaning
-- Magnetic buttons → Reinvent as physics-based button with momentum/drag simulation
-- SplitType with standard stagger → Reinvent as variable timing (heavier characters slower), or conditional animation (animate only vowels), or stagger based on character weight
-- Standard mesh gradient → Reinvent as generative gradient responding to scroll/time/interaction
-- Parallax background → Reinvent as parallax that carries narrative meaning (parallax speed = thematic weight)
-- Floating nav with blur → Reinvent as nav that reveals brand character (color shift, brand mark transforms, etc.)
-
-**ENCOURAGED (Signals ambition):**
-- MSDF 3D text rendering (text as 3D geometry in WebGL — impossible in DOM)
-- DOM-to-shader sync (CSS values / scroll progress drive GLSL uniforms in real-time)
-- Scroll-velocity shaders (scroll *speed*, not position, drives shader distortion)
-- Cinematic timeline sequencing (Theatre.js or deeply nested GSAP timelines, Hollywood-grade orchestration)
-- FBO (Framebuffer Object) particles (GPU-simulated, tens of thousands at 60fps)
-- Gaussian Splatting on the web (3D neural reconstruction rendered in WebGL)
-- Variable font axes as living typography (interaction drives font-variation-settings — push beyond basic weight)
-- Generative variation (procedural algorithms ensure no two visits are identical)
-- Generative WebAudio (ambient sound modulated by interaction — always opt-in)
-- Canvas text decomposition (pixel data drives particle systems, text as data source)
-- Physics-driven UI (Matter.js, Rapier.js — elements with real weight and momentum)
-- WebGPU compute shaders (fluid simulations, parallel compute — bleeding edge, provide WebGL fallback)
-- View Transitions API (native browser page transitions — hybrid with GSAP for complex choreography)
-- Image sequences with alpha compositing (JPEG color + PNG alpha on canvas, scroll-scrubbed)
+Run the self-check from that file before finalizing your signature interaction. If your interaction uses a forbidden pattern, the gate fails. Return to Step 2.
 
 ---
 
@@ -260,7 +247,7 @@ This statement is your thesis. It should:
 
 5. "When scrolling enters a typography section, the brand's momentum builds through variable font weight that increases proportionally to scroll velocity, using GSAP ticker to drive font-variation-settings in real-time, so speed directly correlates to typographic weight."
 
-**Note:** Your signature statement should be specific enough that someone could understand exactly what will happen on the site. Not vague ("smooth animations"), but precise ("scroll velocity drives shader distortion factor").
+**Specificity test:** Read your signature statement aloud. Could a developer build this without asking you a single clarifying question? If the answer is no — if there are vague nouns like "particle effect," "dissolve," or "smooth transition" without technical specificity — rewrite it. The statement fails if it names a visual result without naming the mechanism that produces it.
 
 ---
 
@@ -289,6 +276,34 @@ Example: "The brand is liquid mercury—reflective, responsive..."
 [What feeling does the brand invoke?]
 Example: "The brand invokes vertigo—the good kind..."
 
+## Visual Vocabulary
+
+*Derived from the metaphors above — not chosen from a list of options. Every answer here must trace back to a metaphor.*
+
+### Spatial Language
+Does the brand live in flat 2D, layered depth (CSS 3D), or true 3D (Three.js/WebGL)?
+This determines whether Tier 2.5 is warranted. If Metaphor 1 or 2 references architecture, sculpture, physical objects, or layered materials — consider Tier 2.5. If the metaphors are flat (ink, fabric, print, paint) — stay at Tier 2.
+**Your answer:** [Flat 2D / CSS depth / Three.js single object — with one metaphor justification]
+
+### Custom Cursor
+Should the site use a custom cursor?
+Answer YES only if cursor behaviour is intrinsic to the brand metaphor — not because "it would look good." Write the justification or write "No — native cursor."
+**Your answer:** [Yes: one sentence explaining why cursor = brand metaphor / No: native cursor]
+
+### Perpetual Motion
+Should the site include a marquee or infinite ticker?
+Answer YES only if the brand has content genuinely worth repeating in motion AND perpetual motion fits the brand's emotional trigger. Write the justification or write "No."
+**Your answer:** [Yes: one sentence explaining what content and why motion fits / No]
+
+### Color
+**Do not fill this in yourself. This field is populated by the `brand-color-psychology` skill in Step 2 of the execution sequence.**
+
+After INVENTION.md is written, the `brand-color-psychology` skill runs with the brand brief and these three metaphors as input. It produces a strategically justified palette using the Blue Ocean strategy (competitor audit) and Archetype Color Framework. That proposal is presented to the user for approval. Only confirmed colors enter this field — and only after user approval.
+
+Until that step completes: leave blank. No hex values, no color names, no temperature descriptors.
+
+---
+
 ## Signature Interaction
 
 ### Chosen Paradigm
@@ -298,14 +313,13 @@ Example: "The brand invokes vertigo—the good kind..."
 Why does this paradigm fit the brand metaphor?
 [1-2 sentences of reasoning]
 
-### Rejected Alternatives
-What else did you consider? Why did it fail?
+### Rejected Paradigms
+You must reject at least 3 of the remaining 5 paradigms before this gate passes. One line each.
 
-**Alternative 1:** [Paradigm]
-- Why rejected: [specific reason]
-
-**Alternative 2:** [Paradigm]
-- Why rejected: [specific reason]
+**[Paradigm]:** [Why it doesn't fit this brand specifically]
+**[Paradigm]:** [Why it doesn't fit this brand specifically]
+**[Paradigm]:** [Why it doesn't fit this brand specifically]
+*(add more if applicable)*
 
 ### The Twist
 What is the counterintuitive element that makes this unrepeatable?
@@ -321,11 +335,17 @@ When [trigger], the brand's [metaphor] manifests as [implementation] through [tw
 ## Validation
 
 - [ ] All three metaphors extracted from brand brief
-- [ ] Paradigm chosen consciously (not defaulted to)
-- [ ] At least 2 alternatives considered and rejected
-- [ ] Signature statement is specific and testable
+- [ ] Visual vocabulary fully derived — spatial language, cursor, motion all have metaphor-traced justifications
+- [ ] Color field left blank — no hex values, color names, or temperature descriptors invented
+- [ ] ONE paradigm chosen — no hybrids
+- [ ] At least 3 of the 6 paradigms explicitly rejected with one-line reasoning (paradigm rejections, not aesthetic rejections)
+- [ ] Paradigm chosen passes the brand-specificity test: a competitor couldn't use the same paradigm choice unchanged
+- [ ] Twist contains no automatic disqualifiers: no delay >4s without skip option, no refresh-reset, no content locked behind interaction, no autoplay audio, no hover-only information paths, no intentional technical degradation
+- [ ] Signature statement names the technical mechanism, not just the visual result
+- [ ] Signature statement passes the developer test: buildable without a single clarifying question
 - [ ] Interaction doesn't use Pattern Blacklist without documented twist
 - [ ] Complexity tier chosen matches brand ambition and timeline
+- [ ] If Tier 2.5: spatial metaphor explicitly justifies 3D
 
 ## Notes
 [Any additional context, constraints, or reminders for development]

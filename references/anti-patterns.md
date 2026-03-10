@@ -1,5 +1,11 @@
 # Anti-Patterns: The Convergence Classification
 
+> **Invariant principle:** Visual convergence — all premium web design looking like everyone else's — is the enemy. The patterns classified here define what convergence looks like. This classification is permanently useful because AI training data accumulates "proven" patterns faster than it accumulates genuine innovation.
+>
+> **Current-era note:** The specific patterns listed as Tier 1 Forbidden and Tier 2 Overused reflect what is overused today. As years pass, new patterns will become overused and new ones will signal ambition. If you can identify patterns that have become saturated beyond what's listed here, treat them as Tier 1 or Tier 2 accordingly. The principle — document your twist or don't use it — is permanent.
+>
+> **This is also the canonical Pattern Blacklist** referenced by `references/invention-gate.md`. Run the self-check from this file before finalizing any signature interaction.
+
 The goal of awwwards-v8 is to prevent visual convergence—the phenomenon where all premium web design looks like everyone else's work. These anti-patterns define what convergence looks like.
 
 They are organized in three tiers:
@@ -62,7 +68,25 @@ It is instantly recognizable as "I used Tailwind's defaults without customizing.
 
 ---
 
-### 3. Pure #000000 or #FFFFFF Backgrounds
+### 3. Defaulting to Dark Palettes Without Brand Justification
+
+**What it is:**
+Choosing a dark background as the primary palette because it "feels premium" — without explicit brand direction, user-provided color, or a documented brand metaphor that demands darkness.
+
+**Why forbidden:**
+Dark is not premium. Dark is the training data's default for "sophisticated website." It's the same gravitational pull as parallax backgrounds and stagger reveals — the safe choice that feels like a choice but isn't. When every generated site is dark, dark stops signaling anything. Judges have seen thousands of dark sites. Color restraint signals design confidence. Default dark signals prompt completion.
+
+**The rule:**
+If the user has not provided a color palette — stop. Ask before proceeding. Do not derive colors. Do not default to dark. Do not default to light. The palette is the user's decision, not the agent's. This is a HARD STOP: no color decisions before user direction is received.
+
+**If the user has provided colors:**
+Use them as given. Do not darken them "for premium feel." Do not adjust saturation. Do not add warmth or coolness. The user's colors are the palette.
+
+**Test:** Did the user provide a color? If no, and you have chosen colors, stop and ask.
+
+---
+
+### 4. Pure #000000 or #FFFFFF Backgrounds
 
 **What it is:**
 Using pure black (#000000) or pure white (#FFFFFF) as the primary background color without modification.
@@ -450,7 +474,34 @@ gsap.from('.secondary-bg', {
 
 ---
 
-### 7. Floating Navigation with Blur Backdrop
+### 7. Marquee / Infinite Ticker
+
+**Standard usage:**
+A horizontally scrolling strip of repeating text or logos — infinitely looping, always in motion, often at a 45° angle or as a section divider.
+
+**Why overused:**
+It is now in every agency site, portfolio, and Awwwards nominee. It became a signal of sophistication in 2022-2023. It is now a signal of following a template. Judges have seen it so many times it has become invisible — which is the opposite of what a signature moment should do. Adding a marquee because "it looks good" is using decoration as a substitute for invention.
+
+**Gate questions — answer ALL THREE yes before using it:**
+
+1. **Is the content genuinely worth repeating in motion?** Real client names, real project titles, real testimonials — not lorem ipsum, not generic service descriptions, not made-up brand copy. If the content doesn't earn the repetition, the marquee has nothing to say.
+
+2. **Does perpetual motion fit the brand's emotional trigger from the Invention Gate?** A documentary photography collective about witnessing suffering has no business with a perpetual motion element. A studio that moves fast and ships constantly might. The brand's Metaphor 3 (emotional trigger) must be compatible with endless repetition.
+
+3. **Is the marquee content different from what the page already communicates?** If the marquee repeats information already visible in the hero or navigation, it adds visual noise without adding information. The marquee should say something the rest of the page doesn't.
+
+**If any answer is no:** Do not use the marquee. Find a different way to create visual rhythm or brand energy.
+
+**How to reinvent it (if all three answers are yes):**
+- Speed that responds to scroll velocity (fast scrolling = fast marquee)
+- Marquee that reverses direction on hover, pause on focus
+- Variable font weight that increases as items pass the center point
+- Content that changes based on time of day or session count
+- Documentation: "Marquee [specific twist that makes it unrepeatable]"
+
+---
+
+### 8. Floating Navigation with Blur Backdrop
 
 **Standard usage:**
 Fixed navigation bar that floats above content with `backdrop-filter: blur()` background.
@@ -665,11 +716,13 @@ Before launching, scan your interaction for anti-patterns:
 - [ ] No generic display fonts (Poppins, Nunito, Lato)
 - [ ] No Tailwind default colors (#3B82F6)
 - [ ] No pure #000 or #FFF backgrounds
+- [ ] No dark palette chosen without user-provided color direction — if user hasn't provided colors, stop and ask
 - [ ] No `transition: all` anywhere
 - [ ] No mixed icon libraries — Lucide only (search for `font-awesome`, `heroicons`, `phosphor`)
 - [ ] No perfectly symmetric layouts
 - [ ] No unmodified stock photography
 - [ ] No `overflow: hidden` on hero without descender safety
+- [ ] If a marquee is present: all three gate questions answered yes and the twist is documented
 - [ ] Every Tier 2 pattern has documented twist
 - [ ] At least one Tier 3 pattern if aiming for high distinction
 - [ ] Visual validation completed (descender check, mobile test, device testing)

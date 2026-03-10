@@ -1,5 +1,9 @@
 # Descender Safety Protocol
 
+> **Invariant principle:** Descenders (g, y, q, p) extend below the typographic baseline. This is a font metric reality, not a current-era trend. Any layout that clips the content box at the baseline will sever them. This protocol is permanently necessary.
+>
+> **Current-era note:** The canvas measurement technique and CSS `padding-bottom` approach described here are current best practice. If future browsers or CSS specifications offer native descender clearance measurement, use them — the principle (always provide clear headroom below display text) is non-negotiable.
+
 ## The Problem: Why Descenders Disappear
 
 Descender clipping (letters g, y, q, p cut off at the bottom) is the most consistent visual tell of non-professional web work. It happens for mechanical reasons that seem impossible to debug unless you know where to look.

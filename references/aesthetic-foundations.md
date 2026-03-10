@@ -1,5 +1,9 @@
 # Aesthetic Foundations: Design System & Premium Fundamentals
 
+> **Invariant principle:** Typography must create unambiguous hierarchy. Visual consistency requires systematic choices, not ad-hoc decisions. **Colors are user-owned — this file does not provide color guidance.** Wait for the user to supply the palette.
+>
+> **Current-era note:** The specific font recommendations, golden ratio scale values, and CSS implementation patterns in this file reflect current practice. If you know of superior typefaces, better scaling systems, or more efficient CSS approaches, use them — honor the principles (clear hierarchy, systematic consistency), not the specific values.
+
 ---
 
 ## Typography System: Golden Ratio (Φ = 1.618)
@@ -366,447 +370,88 @@ code {
 
 ---
 
-## 6 Luxury Color Palettes
-
-Each palette includes primary, secondary, accent, and supporting colors. Copy these directly into your project.
-
-### Palette 1: Midnight Opulence
-
-**Vibe:** Dark luxury, mysterious, high-end technology
-
-```css
-:root {
-  --color-midnight-bg: #0A0A0F;
-  --color-midnight-text: #E8E4DC;
-  --color-midnight-accent: #C4A882;
-  --color-midnight-secondary: #6B4F2E;
-  --color-midnight-success: #4CAF50;
-  --color-midnight-warning: #FFC107;
-  --color-midnight-error: #FF6B6B;
-}
-
-body.midnight {
-  background: var(--color-midnight-bg);
-  color: var(--color-midnight-text);
-}
-
-.accent.midnight {
-  color: var(--color-midnight-accent);
-}
-```
-
-**Usage:** Luxury tech, fintech, premium SaaS, jewelry brands
-
 ---
 
-### Palette 2: Golden Hour Elite
+## Quick Start: Base CSS Variables
 
-**Vibe:** Warm, precious, timeless elegance
-
-```css
-:root {
-  --color-golden-bg: #1A1209;
-  --color-golden-text: #F5EDD6;
-  --color-golden-accent: #D4A843;
-  --color-golden-secondary: #8B6F47;
-  --color-golden-tertiary: #C4985C;
-  --color-golden-highlight: #FFF8E7;
-}
-
-body.golden {
-  background: var(--color-golden-bg);
-  color: var(--color-golden-text);
-}
-
-.hero.golden {
-  background: linear-gradient(
-    135deg,
-    var(--color-golden-bg) 0%,
-    #2A1F14 100%
-  );
-}
-```
-
-**Usage:** Luxury watches, premium wine, heritage brands, high-end fashion
-
----
-
-### Palette 3: Emerald Sophistication
-
-**Vibe:** Refined, natural, premium wellness
-
-```css
-:root {
-  --color-emerald-bg: #0D1A14;
-  --color-emerald-text: #E8F0EB;
-  --color-emerald-accent: #4A8C6F;
-  --color-emerald-primary: #2D5F49;
-  --color-emerald-secondary: #5A9F7F;
-  --color-emerald-light: #B8D4CC;
-}
-
-body.emerald {
-  background: var(--color-emerald-bg);
-  color: var(--color-emerald-text);
-}
-
-.cta.emerald {
-  background: var(--color-emerald-primary);
-  color: var(--color-emerald-text);
-  border: 1px solid var(--color-emerald-accent);
-}
-```
-
-**Usage:** Luxury wellness, sustainability, organic brands, environmental agencies
-
----
-
-### Palette 4: Obsidian Chrome
-
-**Vibe:** Cold precision, technical, cutting-edge
-
-```css
-:root {
-  --color-obsidian-bg: #0F0F14;
-  --color-obsidian-text: #E4E8F0;
-  --color-obsidian-accent: #8BA3C4;
-  --color-obsidian-primary: #3D5A7F;
-  --color-obsidian-secondary: #5A7BA3;
-  --color-obsidian-highlight: #A0C8FF;
-}
-
-body.obsidian {
-  background: var(--color-obsidian-bg);
-  color: var(--color-obsidian-text);
-}
-
-.button.obsidian {
-  background: var(--color-obsidian-primary);
-  border: 1px solid var(--color-obsidian-accent);
-}
-```
-
-**Usage:** Tech companies, AI brands, software platforms, hardware brands
-
----
-
-### Palette 5: Warm Concrete
-
-**Vibe:** Grounded, industrial-luxury, architectural
-
-```css
-:root {
-  --color-concrete-bg: #1C1814;
-  --color-concrete-text: #F0EDE8;
-  --color-concrete-accent: #C8B4A0;
-  --color-concrete-primary: #7A6B5E;
-  --color-concrete-secondary: #9A8B7E;
-  --color-concrete-warm: #D4A89A;
-}
-
-body.concrete {
-  background: var(--color-concrete-bg);
-  color: var(--color-concrete-text);
-}
-
-.section.concrete {
-  background: linear-gradient(
-    to right,
-    #1C1814,
-    #2A2219
-  );
-}
-```
-
-**Usage:** Architecture firms, design studios, real estate, hospitality
-
----
-
-### Palette 6: Arctic Minimal
-
-**Vibe:** Clean, modern, Scandinavian-inspired
-
-```css
-:root {
-  --color-arctic-bg: #1A1E2A;
-  --color-arctic-text: #F5F7FA;
-  --color-arctic-accent: #5B9AC8;
-  --color-arctic-primary: #2E4A6B;
-  --color-arctic-secondary: #7BA3C8;
-  --color-arctic-tertiary: #A0B5CC;
-}
-
-body.arctic {
-  background: var(--color-arctic-bg);
-  color: var(--color-arctic-text);
-}
-
-.card.arctic {
-  background: #252B38;
-  border: 1px solid var(--color-arctic-tertiary);
-}
-```
-
-**Usage:** SaaS products, productivity apps, Scandinavian brands, minimalist design
-
----
-
-## Layout Principles: The Golden Grid
-
-### Broken Grid (Mathematical Misalignment)
-
-```css
-/* Container with golden ratio columns */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1.618fr;  /* Golden ratio */
-  gap: 60px;
-  padding: 120px 80px;
-}
-
-/* Intentionally off-grid elements signal sophistication */
-.feature-card {
-  margin-left: -20%;    /* Intentional offset */
-  transform: translateY(40px);  /* Vertical tension */
-}
-
-/* Asymmetric grid */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-}
-
-.portfolio-item:nth-child(2) {
-  grid-column: span 1.5;  /* Breaks perfect symmetry */
-  grid-row: span 2;
-}
-```
-
-### Macro Whitespace (Section Padding)
-
-```css
-/* Generous section padding creates breathing room */
-section {
-  padding: 120px 80px;  /* Desktop */
-}
-
-@media (max-width: 1024px) {
-  section {
-    padding: 80px 60px;  /* Tablet */
-  }
-}
-
-@media (max-width: 640px) {
-  section {
-    padding: 60px 40px;  /* Mobile */
-  }
-}
-
-/* Never less than minimum padding */
-:root {
-  --section-padding-top: 120px;
-  --section-padding-bottom: 120px;
-  --section-padding-mobile: 60px;
-}
-```
-
-### Container Width
-
-```css
-/* Optimal reading width for body text */
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 0 40px;
-}
-
-/* Narrow width for editorial content */
-.article {
-  max-width: 720px;
-}
-
-/* Full bleed for hero sections */
-.hero {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-}
-```
-
----
-
-## Component Spacing Scale
-
-A consistent 8px-based scale for all spacing decisions.
-
-```css
-:root {
-  /* Spacing scale (8px base) */
-  --space-xs: 4px;      /* Micro padding */
-  --space-sm: 8px;      /* Small padding */
-  --space-md: 12px;     /* Medium padding */
-  --space-base: 16px;   /* Standard */
-  --space-lg: 20px;     /* Large */
-  --space-xl: 24px;     /* Extra large */
-  --space-2xl: 32px;    /* 2x extra */
-  --space-3xl: 40px;    /* 3x extra */
-  --space-4xl: 48px;    /* 4x extra */
-  --space-5xl: 60px;    /* 5x extra */
-  --space-6xl: 80px;    /* 6x extra */
-  --space-7xl: 120px;   /* 7x extra */
-}
-
-/* Apply consistently */
-.button {
-  padding: var(--space-sm) var(--space-lg);  /* 8px 20px */
-  border-radius: 4px;
-  font-size: var(--font-body);
-}
-
-.card {
-  padding: var(--space-2xl);                /* 32px all around */
-  margin-bottom: var(--space-3xl);          /* 40px below */
-}
-
-.section {
-  gap: var(--space-4xl);                    /* 48px between items */
-  padding: var(--space-7xl) var(--space-6xl);  /* 120px vertical, 80px horizontal */
-}
-```
-
----
-
-## Animation Timing Scale
-
-Consistent timing creates cohesive motion language.
-
-```css
-:root {
-  /* Timing scale (milliseconds) */
-  --timing-micro: 150ms;      /* Hover feedback, micro-interactions */
-  --timing-fast: 200ms;       /* Quick state changes */
-  --timing-standard: 300ms;   /* Primary interaction timing */
-  --timing-section: 600ms;    /* Section reveals, entrance animations */
-  --timing-macro: 1000ms;     /* Page-level transitions */
-  --timing-slow: 1200ms;      /* Cinematic reveals */
-
-  /* Easing functions */
-  --ease-in: cubic-bezier(0.4, 0, 1, 1);
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-/* Apply to transitions and animations */
-.interactive {
-  transition: opacity var(--timing-standard) var(--ease-out),
-              transform var(--timing-standard) var(--ease-out);
-  /* Never use 'transition: all' — it causes layout thrashing */
-}
-
-.hero {
-  animation: fadeInUp var(--timing-section) var(--ease-out);
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-```
-
-### Timing Rules
-
-- **Hover/focus feedback:** 150-200ms (immediate-feeling)
-- **Button press:** 200-300ms (responsive)
-- **Section reveals on scroll:** 400-800ms (noticeable but not slow)
-- **Page transitions:** 300-600ms (smooth but fast)
-- **Cinematic moments:** 1000-1500ms (let users appreciate)
-
----
-
-## Quick Start: Copy-Paste Global CSS
-
-This is production-ready CSS. Copy into your `global.css` or main stylesheet:
+Copy this into your project. **Color variables are left blank — the user provides their own colors. Do not attempt to invent, derive, or fill them.** Wait for the user to supply the palette before applying any color to the design.
 
 ```css
 /* ============================================
    AESTHETIC FOUNDATIONS: GLOBAL CSS
-   Copy this entire file to your project
+   Colour variables are intentionally blank.
+   Colors are owned by the user — wait for them.
    ============================================ */
 
-/* TYPOGRAPHY & SPACING VARIABLES */
 :root {
-  /* Golden Ratio Typography */
-  --font-body: clamp(1rem, 1.5vw, 1.125rem);
-  --font-lead: clamp(1.25rem, 1.875vw, 1.406rem);
+  /* ── COLOURS: Provided by user — leave blank until supplied ── */
+  --bg:         ; /* Primary background */
+  --bg-alt:     ; /* Secondary background (sections, cards) */
+  --text:       ; /* Primary text — must be 7:1+ contrast on --bg */
+  --text-muted: ; /* Secondary text — must be 4.5:1+ contrast on --bg */
+  --accent:     ; /* Brand accent — used in 20% of design or less */
+
+  /* ── TYPOGRAPHY: Golden Ratio ── */
+  --font-body:       clamp(1rem, 1.5vw, 1.125rem);
+  --font-lead:       clamp(1.25rem, 1.875vw, 1.406rem);
   --font-subheading: clamp(1.625rem, 3vw, 2.25rem);
-  --font-heading: clamp(2.625rem, 5vw, 3.5rem);
-  --font-display: clamp(4.25rem, 8vw, 5.75rem);
-  --font-hero: clamp(6.854rem, 12vw, 9.5rem);
+  --font-heading:    clamp(2.625rem, 5vw, 3.5rem);
+  --font-display:    clamp(4.25rem, 8vw, 5.75rem);
+  --font-hero:       clamp(6.854rem, 12vw, 9.5rem);
+  --font-micro:      clamp(0.75rem, 1vw, 0.875rem);
+  --font-small:      clamp(0.875rem, 1.25vw, 1rem);
 
-  /* Line Heights */
-  --lh-body: 1.6;
+  /* ── LINE HEIGHTS ── */
+  --lh-body:       1.6;
+  --lh-lead:       1.5;
   --lh-subheading: 1.35;
-  --lh-heading: 1.2;
-  --lh-display: 1.1;
-  --lh-hero: 1.05;
+  --lh-heading:    1.2;
+  --lh-display:    1.1;
+  --lh-hero:       1.05;
 
-  /* Letter Spacing */
+  /* ── LETTER SPACING ── */
   --ls-normal: 0;
-  --ls-tight: -0.02em;
-  --ls-caps: 0.05em;
+  --ls-tight:  -0.02em;
+  --ls-wide:   0.02em;
+  --ls-caps:   0.05em;
 
-  /* Font Families (change to your selected fonts) */
+  /* ── FONT FAMILIES: Select based on brand — see Premium Font Recommendations ── */
   --font-serif: 'Editorial New', Georgia, serif;
-  --font-sans: 'Söhne', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: 'PP Neue Machina Mono', 'Courier New', monospace;
+  --font-sans:  'Söhne', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:  'PP Neue Machina Mono', 'Courier New', monospace;
 
-  /* Descender Safety */
-  --descender-clearance: 0.18em;
+  /* ── DESCENDER SAFETY ── */
+  --descender-clearance: 0.18em; /* Adjust per font — measure with canvas API */
 
-  /* Colors (Midnight Opulence palette) */
-  --color-bg: #0A0A0F;
-  --color-text: #E8E4DC;
-  --color-accent: #C4A882;
-  --color-secondary: #6B4F2E;
+  /* ── SPACING SCALE (8px base) ── */
+  --sp-xs:  4px;
+  --sp-sm:  8px;
+  --sp-md:  12px;
+  --sp-base: 16px;
+  --sp-lg:  20px;
+  --sp-xl:  24px;
+  --sp-2xl: 32px;
+  --sp-3xl: 40px;
+  --sp-4xl: 48px;
+  --sp-5xl: 60px;
+  --sp-6xl: 80px;
+  --sp-7xl: 120px;
 
-  /* Spacing Scale (8px base) */
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 12px;
-  --space-base: 16px;
-  --space-lg: 20px;
-  --space-xl: 24px;
-  --space-2xl: 32px;
-  --space-3xl: 40px;
-  --space-4xl: 48px;
-  --space-5xl: 60px;
-  --space-6xl: 80px;
-  --space-7xl: 120px;
+  /* ── ANIMATION TIMING ── */
+  --t-micro: 150ms;
+  --t-fast:  200ms;
+  --t-std:   300ms;
+  --t-slow:  600ms;
+  --t-macro: 1000ms;
 
-  /* Animation Timing */
-  --timing-micro: 150ms;
-  --timing-fast: 200ms;
-  --timing-standard: 300ms;
-  --timing-section: 600ms;
-  --timing-macro: 1000ms;
-
-  /* Easing */
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  /* ── EASING ── */
+  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-back:   cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* RESET & BASE STYLES */
-* {
+/* RESET */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -814,17 +459,17 @@ This is production-ready CSS. Copy into your `global.css` or main stylesheet:
 
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-sans);
   font-size: var(--font-body);
   line-height: var(--lh-body);
-  color: var(--color-text);
-  background: var(--color-bg);
+  color: var(--text);
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* TYPOGRAPHY */
@@ -835,8 +480,8 @@ h1 {
   font-weight: 600;
   letter-spacing: var(--ls-tight);
   padding-bottom: var(--descender-clearance);
-  overflow: visible; /* NOT clip — clip ignores padding */
-  margin-bottom: var(--space-base);
+  overflow: visible; /* NOT clip — clip ignores padding-bottom */
+  margin-bottom: var(--sp-base);
 }
 
 h2 {
@@ -846,8 +491,8 @@ h2 {
   font-weight: 500;
   letter-spacing: var(--ls-tight);
   padding-bottom: var(--descender-clearance);
-  overflow: visible; /* NOT clip — clip ignores padding */
-  margin-bottom: var(--space-lg);
+  overflow: visible;
+  margin-bottom: var(--sp-lg);
 }
 
 h3 {
@@ -856,8 +501,8 @@ h3 {
   line-height: var(--lh-heading);
   font-weight: 600;
   padding-bottom: var(--descender-clearance);
-  overflow: visible; /* NOT clip — clip ignores padding */
-  margin-bottom: var(--space-md);
+  overflow: visible;
+  margin-bottom: var(--sp-md);
 }
 
 h4 {
@@ -865,31 +510,28 @@ h4 {
   font-size: var(--font-subheading);
   line-height: var(--lh-subheading);
   font-weight: 600;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--sp-md);
 }
 
 h5, h6 {
   font-family: var(--font-sans);
   font-size: var(--font-body);
-  line-height: var(--lh-body);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: var(--ls-caps);
-  margin-bottom: var(--space-base);
+  margin-bottom: var(--sp-base);
 }
 
 p {
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--sp-2xl);
 }
 
-p + p {
-  margin-top: 0;
-}
+p + p { margin-top: 0; }
 
 .lead {
   font-size: var(--font-lead);
-  line-height: 1.5;
-  color: var(--color-secondary);
+  line-height: var(--lh-lead);
+  color: var(--text-muted);
 }
 
 .display {
@@ -899,108 +541,63 @@ p + p {
   font-weight: 600;
   letter-spacing: var(--ls-tight);
   padding-bottom: var(--descender-clearance);
-  overflow: visible; /* NOT clip — clip ignores padding */
+  overflow: visible;
 }
 
-/* LINKS */
-a {
-  color: var(--color-accent);
-  text-decoration: none;
-  transition: opacity var(--timing-fast) var(--ease-out);
+.micro {
+  font-family: var(--font-sans);
+  font-size: var(--font-micro);
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-caps);
+  color: var(--text-muted);
 }
 
-a:hover {
-  opacity: 0.8;
-}
-
-a:active {
-  opacity: 0.6;
-}
-
-/* LISTS */
-ul, ol {
-  margin-left: var(--space-3xl);
-  margin-bottom: var(--space-2xl);
-}
-
-li {
-  margin-bottom: var(--space-base);
-}
-
-/* CODE */
-code {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-  background: var(--color-secondary);
-  padding: var(--space-xs) var(--space-sm);
-  border-radius: 4px;
-}
-
-pre {
-  font-family: var(--font-mono);
-  background: var(--color-secondary);
-  padding: var(--space-2xl);
-  overflow-x: auto;
-  border-radius: 8px;
-  margin-bottom: var(--space-3xl);
-}
-
-/* BUTTONS */
-button, .button {
+/* BUTTONS — base only, no colours: user supplies palette */
+button, .btn {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-2xl);
+  gap: var(--sp-sm);
+  padding: var(--sp-sm) var(--sp-2xl);
   font-family: var(--font-sans);
   font-size: var(--font-body);
   font-weight: 600;
-  color: var(--color-bg);
-  background: var(--color-accent);
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background var(--timing-fast) var(--ease-out),
-              transform var(--timing-fast) var(--ease-out),
-              opacity var(--timing-fast) var(--ease-out);
-  /* Never use 'transition: all' — it causes layout thrashing */
+  text-decoration: none;
+  transition: background var(--t-fast) var(--ease-out),
+              transform var(--t-fast) var(--ease-out),
+              opacity var(--t-fast) var(--ease-out);
+  /* Background and colour: set from palette, not here */
 }
 
-button:hover, .button:hover {
-  background: var(--color-secondary);
+button:hover, .btn:hover {
   transform: translateY(-2px);
 }
 
-button:active, .button:active {
+button:active, .btn:active {
   transform: translateY(0);
   opacity: 0.9;
 }
 
 /* SECTIONS */
 section {
-  padding: var(--space-7xl) var(--space-6xl);
+  padding: var(--sp-7xl) var(--sp-6xl);
 }
 
 @media (max-width: 1024px) {
-  section {
-    padding: var(--space-5xl) var(--space-4xl);
-  }
+  section { padding: var(--sp-5xl) var(--sp-4xl); }
 }
 
 @media (max-width: 640px) {
-  section {
-    padding: var(--space-4xl) var(--space-3xl);
-  }
+  section { padding: var(--sp-4xl) var(--sp-3xl); }
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE TYPOGRAPHY */
 @media (max-width: 768px) {
-  h1 {
-    font-size: var(--font-display);
-  }
-
-  h2 {
-    font-size: var(--font-heading);
-  }
+  h1 { font-size: var(--font-display); }
+  h2 { font-size: var(--font-heading); }
 }
 ```
 
@@ -1008,10 +605,8 @@ section {
 
 ## Using These Foundations
 
-1. **Copy the global CSS** into your main stylesheet
-2. **Customize the color palette** to match your brand
-3. **Select your fonts** and update `--font-serif`, `--font-sans`, `--font-mono`
-4. **Update `--descender-clearance`** based on your font (measure with canvas API)
-5. **Test on all devices** and adjust spacing/sizing as needed
-
-These foundations are battle-tested and production-ready. They form the basis for every Awwwards-winning design.
+1. **Colors are user-owned.** Leave all color variables blank until the user provides them. Do not invent, derive, or fill them.
+2. Select fonts from the **Premium Font Recommendations** above — match to brand voice
+3. Verify contrast ratios at [contrast.tools](https://contrast.tools) once the user provides colors
+4. Measure `--descender-clearance` for your chosen font using the canvas API (see `references/descender-safety.md`)
+5. Test on 375px mobile before declaring the foundations done

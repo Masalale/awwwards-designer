@@ -1,6 +1,8 @@
 # Tech Stack Guide: Tier-Based Setup & Configuration
 
-> **Version policy:** No version numbers are pinned in this skill. Always install the latest version of every library unless the project has a specific reason to pin. Before writing setup or integration code for any library, use Context7 (or an equivalent MCP documentation tool) to pull current API docs — library APIs shift between major versions and guessing from memory produces bugs.
+> **Invariant principle:** Use the framework best suited to each task — static/content-driven sites need a different tool than full-stack interactive ones. Currently: **Astro** for Tier 1/2/2.5 (static, content-driven, portfolio, multi-page), **TanStack Start** for Tier 2/3 (server-side data, full-stack routing, real-time). No other frameworks.
+>
+> **Current-era note:** If you know of superior frameworks that better serve these roles, use them — honor the principle, not the specific tools. The library setup commands, configuration files, and integration patterns in this file are current-era recommendations. Always fetch current API docs via Context7 or equivalent before writing integration code. Library APIs shift between major versions.
 
 ---
 
@@ -154,113 +156,11 @@ export default defineConfig({
 }
 ```
 
-### Typography System (Golden Ratio)
+### Typography System
 
-```css
-/* src/styles/typography.css */
+The canonical typography scale — golden ratio clamp() variables, line heights, letter spacing, and CSS class implementations — lives in **`references/aesthetic-foundations.md`**.
 
-:root {
-  /* Golden Ratio: 1.618 */
-  /* Base: 1rem = 16px */
-
-  --font-base: 1rem;
-  --font-ratio: 1.618;
-
-  /* Responsive typography with clamp() */
-  --font-body: clamp(1rem, 1.5vw, 1.125rem);
-  --font-lead: clamp(1.25rem, 1.875vw, 1.406rem);
-  --font-subheading: clamp(1.625rem, 3vw, 2.25rem);
-  --font-heading: clamp(2.625rem, 5vw, 3.5rem);
-  --font-display: clamp(4.25rem, 8vw, 5.75rem);
-  --font-hero: clamp(6.854rem, 12vw, 9.5rem);
-
-  /* Line heights */
-  --lh-body: 1.6;
-  --lh-subheading: 1.35;
-  --lh-heading: 1.2;
-  --lh-display: 1.1;
-  --lh-hero: 1.05;
-
-  /* Letter spacing */
-  --ls-normal: 0;
-  --ls-tight: -0.02em;
-  --ls-caps: 0.05em;
-
-  /* Font families (premium) */
-  --font-serif: 'Editorial New', Georgia, serif;
-  --font-sans: 'Söhne', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'PP Neue Machina Mono', monospace;
-
-  /* Descender clearance (per font) */
-  --descender-clearance: 0.18em;
-}
-
-body {
-  font-family: var(--font-sans);
-  font-size: var(--font-body);
-  line-height: var(--lh-body);
-  color: #1a1a1a;
-  background: #fafaf8;
-}
-
-h1 {
-  font-family: var(--font-serif);
-  font-size: var(--font-hero);
-  line-height: var(--lh-hero);
-  font-weight: 600;
-  padding-bottom: var(--descender-clearance);
-  overflow: visible; /* NOT clip — clip ignores padding */
-}
-
-h2 {
-  font-family: var(--font-serif);
-  font-size: var(--font-display);
-  line-height: var(--lh-display);
-  font-weight: 500;
-  padding-bottom: var(--descender-clearance);
-  overflow: visible; /* NOT clip — clip ignores padding */
-}
-
-h3 {
-  font-family: var(--font-sans);
-  font-size: var(--font-heading);
-  line-height: var(--lh-heading);
-  font-weight: 600;
-  padding-bottom: var(--descender-clearance);
-  overflow: visible; /* NOT clip — clip ignores padding */
-}
-
-p {
-  font-size: var(--font-body);
-  line-height: var(--lh-body);
-  margin-bottom: 1.5rem;
-}
-
-.lead {
-  font-size: var(--font-lead);
-  line-height: 1.5;
-  color: #666;
-}
-
-/* All caps */
-.caps {
-  text-transform: uppercase;
-  letter-spacing: var(--ls-caps);
-  font-weight: 600;
-  font-size: 0.875em;
-}
-
-/* Display class */
-.display {
-  font-family: var(--font-serif);
-  font-size: var(--font-display);
-  line-height: var(--lh-display);
-  font-weight: 600;
-  letter-spacing: var(--ls-tight);
-  padding-bottom: var(--descender-clearance);
-  overflow: visible; /* NOT clip — clip ignores padding */
-}
-```
+Copy the CSS custom properties and class definitions from that file into your project's `src/styles/typography.css`. Do not redefine them here; aesthetic-foundations.md is the single source of truth for the design system.
 
 ### Font Loading Strategy
 
@@ -607,6 +507,243 @@ View Transitions require specific headers. Configure your hosting:
   ]
 }
 ```
+
+---
+
+## Tier 2.5: Astro + GSAP + Light 3D
+
+For projects where the Invention Gate produces a metaphor that explicitly requires three-dimensional space — architecture, sculpture, physical product, layers. Do not use this tier if the metaphors are flat (ink, fabric, print, surface).
+
+Choose one of three implementation paths depending on depth needed:
+
+### Path A: CSS 3D Only (No Library)
+
+No extra dependencies. Use when depth comes from perspective and layering, not actual geometry.
+
+```css
+/* Perspective container */
+.scene {
+  perspective: 1200px;
+  perspective-origin: 50% 40%;
+}
+
+/* Layered elements in z-space */
+.layer-back  { transform: translateZ(-120px) scale(1.1); }
+.layer-mid   { transform: translateZ(0); }
+.layer-front { transform: translateZ(80px) scale(0.95); }
+
+/* Tilt card on cursor proximity — drive with JS CSS vars */
+.card-3d {
+  transform-style: preserve-3d;
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform 0.1s ease-out;
+}
+```
+
+```javascript
+// Drive card tilt with cursor position
+document.querySelectorAll('.card-3d').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const cx = (e.clientX - rect.left) / rect.width  - 0.5;  // -0.5 to 0.5
+    const cy = (e.clientY - rect.top)  / rect.height - 0.5;
+    card.style.setProperty('--tilt-x', `${-cy * 12}deg`);
+    card.style.setProperty('--tilt-y', `${cx * 12}deg`);
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.setProperty('--tilt-x', '0deg');
+    card.style.setProperty('--tilt-y', '0deg');
+  });
+});
+
+// Touch: no tilt — reset and do nothing
+if (window.matchMedia('(pointer: coarse)').matches) {
+  document.querySelectorAll('.card-3d').forEach(card => {
+    card.style.setProperty('--tilt-x', '0deg');
+    card.style.setProperty('--tilt-y', '0deg');
+  });
+}
+```
+
+**When to use Path A:** Layered hero sections, tilt-on-hover cards, depth in editorial layouts, parallax with real z-depth. Zero bundle cost.
+
+---
+
+### Path B: Three.js Single Object
+
+One mesh, one scene, one purpose. The 3D element is a focal hero moment — not decoration.
+
+```bash
+bun add three
+```
+
+```javascript
+// src/scripts/hero-sculpture.js
+import * as THREE from 'three';
+
+export function initHeroSculpture(canvasEl) {
+  // Guard: mobile gets static fallback
+  if (window.matchMedia('(pointer: coarse)').matches) {
+    canvasEl.style.display = 'none';
+    document.getElementById('hero-fallback').style.display = 'block';
+    return null;
+  }
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas: canvasEl,
+    alpha: true,
+    antialias: true,
+  });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(canvasEl.offsetWidth, canvasEl.offsetHeight);
+
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, canvasEl.offsetWidth / canvasEl.offsetHeight, 0.1, 100);
+  camera.position.set(0, 0, 5);
+
+  // One mesh — make it count
+  const geometry = new THREE.TorusKnotGeometry(1.2, 0.35, 200, 32);
+  const material = new THREE.MeshStandardMaterial({
+    color: 0xc9a96e,       // Your --accent colour
+    metalness: 0.6,
+    roughness: 0.3,
+  });
+  const mesh = new THREE.Mesh(geometry, material);
+  scene.add(mesh);
+
+  // Minimal lighting
+  scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+  const key = new THREE.DirectionalLight(0xffffff, 1.2);
+  key.position.set(3, 5, 5);
+  scene.add(key);
+
+  // Cursor-driven rotation
+  let targetX = 0, targetY = 0;
+  document.addEventListener('mousemove', (e) => {
+    targetX = (e.clientX / window.innerWidth  - 0.5) * 0.8;
+    targetY = (e.clientY / window.innerHeight - 0.5) * 0.5;
+  }, { passive: true });
+
+  // GSAP ticker — sync with Lenis if present
+  let raf;
+  function tick() {
+    mesh.rotation.y += (targetX - mesh.rotation.y) * 0.05;
+    mesh.rotation.x += (targetY - mesh.rotation.x) * 0.05;
+    mesh.rotation.z += 0.002; // slow auto-spin
+    renderer.render(scene, camera);
+    raf = requestAnimationFrame(tick);
+  }
+  tick();
+
+  // Resize
+  window.addEventListener('resize', () => {
+    camera.aspect = canvasEl.offsetWidth / canvasEl.offsetHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(canvasEl.offsetWidth, canvasEl.offsetHeight);
+  });
+
+  // Cleanup
+  return () => {
+    cancelAnimationFrame(raf);
+    renderer.dispose();
+    geometry.dispose();
+    material.dispose();
+  };
+}
+```
+
+```astro
+---
+// src/components/HeroSculpture.astro
+---
+<div class="sculpture-wrapper">
+  <canvas id="hero-canvas"></canvas>
+  <!-- Fallback for touch/mobile -->
+  <div id="hero-fallback" style="display:none">
+    <!-- Static image or CSS shape -->
+  </div>
+</div>
+
+<script>
+  import { initHeroSculpture } from '../scripts/hero-sculpture.js';
+  const canvas = document.getElementById('hero-canvas');
+  const cleanup = initHeroSculpture(canvas);
+  document.addEventListener('astro:before-swap', () => cleanup?.());
+</script>
+
+<style>
+  .sculpture-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>
+```
+
+**When to use Path B:** Hero sculpture as brand mark, product visualization, abstract geometry that responds to user. One mesh maximum — add a second and you're building Tier 3.
+
+---
+
+### Path C: CSS Perspective Grid
+
+The entire layout exists in 3D space. Sections are planes at different z-depths. Scroll rotates or translates the camera.
+
+```css
+.perspective-stage {
+  perspective: 800px;
+  perspective-origin: 50% 30%;
+  overflow: hidden;
+}
+
+/* Sections as planes in z-space */
+.plane {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* GSAP drives the stage rotation on scroll */
+```
+
+```javascript
+// Scroll-driven perspective rotation
+gsap.to('.perspective-stage', {
+  rotationX: 8,
+  scrollTrigger: {
+    trigger: '.perspective-stage',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: 1.5,
+  }
+});
+```
+
+**When to use Path C:** Architecture or spatial brand stories where the camera moving through space is the metaphor. Requires careful mobile fallback — flat layout on touch devices.
+
+---
+
+### Tier 2.5 Mobile Rule
+
+All Tier 2.5 implementations must have a mobile fallback defined before writing the 3D code:
+
+```javascript
+const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+if (isTouchDevice) {
+  // Path A: Remove perspective, show flat layout
+  // Path B: Hide canvas, show fallback image/CSS shape
+  // Path C: Remove perspective-stage transforms, show standard vertical scroll
+}
+```
+
+**Performance targets:**
+- CSS 3D (Path A): Same as Tier 2 — no overhead
+- Three.js single mesh (Path B): < 150kb total JS (Three.js ~140kb gzipped — use CDN to cache)
+- FCP: < 1.3s — do NOT block render on Three.js initialization; lazy-init after LCP
 
 ---
 
@@ -975,13 +1112,14 @@ function sendToAnalytics(metric) {
 
 ## Summary: Tier Decision Matrix
 
-| Metric | Tier 1 | Tier 2 | Tier 3 |
-|--------|--------|--------|--------|
-| Framework | Astro (latest) | Astro + GSAP + Lenis | TanStack Start / Astro + R3F |
-| FCP target | < 1.0s | < 1.2s | < 1.5s |
-| LCP target | < 2.5s | < 2.5s | < 3.0s |
-| JS goal | minimal | < 120kb | < 300kb |
-| Setup time | 2 hours | 4 hours | 8+ hours |
+| Metric | Tier 1 | Tier 2 | Tier 2.5 | Tier 3 |
+|--------|--------|--------|----------|--------|
+| Framework | Astro | Astro + GSAP + Lenis | Astro + GSAP + CSS 3D or Three.js | TanStack Start / Astro + R3F |
+| FCP target | < 1.0s | < 1.2s | < 1.3s | < 1.5s |
+| LCP target | < 2.5s | < 2.5s | < 2.5s | < 3.0s |
+| JS goal | minimal | < 120kb | < 150kb | < 300kb |
+| Setup time | 2 hours | 4 hours | 5-6 hours | 8+ hours |
+| Requires spatial metaphor | No | No | **Yes** | Yes |
 | Performance impact | Minimal | Medium | High (GPU-bound) |
 | Complexity | Low | Medium | High |
 

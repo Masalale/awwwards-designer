@@ -1,5 +1,9 @@
 # The 5 Technique Families: Tier-Based Implementation Patterns
 
+> **Invariant principle:** Every signature interaction lives within a paradigm — Cursor, Scroll, Loading, Hover, Typography, or Layout. The paradigm is the medium; the signature interaction is the message. Choose one paradigm and invent within it.
+>
+> **Current-era note:** The code examples, library choices, and tier implementations in this file reflect current best practice. If you know of superior techniques for achieving the same effects, use them — honor the paradigm and the brand-to-interaction mapping, not the specific library. The classification of what's Tier 1 vs. Tier 2 vs. Tier 3 may shift as technology evolves.
+
 Each technique family is a paradigm (Cursor, Scroll, Loading, Hover, Typography) with three tiers of increasing complexity. Within each family, choose your tier based on project scope and technical confidence.
 
 ---
@@ -7,6 +11,13 @@ Each technique family is a paradigm (Cursor, Scroll, Loading, Hover, Typography)
 ## Family 1: Cursor
 
 The pointer itself becomes expressive. How the cursor moves, trails, responds to proximity, distorts, or changes based on context.
+
+**Brand gate — answer before implementing any custom cursor:**
+1. Can you write one sentence explaining why cursor behaviour is intrinsic to this brand's metaphor — not just "it looks good"?
+2. Is the cursor doing something the native cursor cannot, in a way that advances the brand story?
+3. If the cursor were removed, would the brand experience feel incomplete?
+
+If you cannot answer YES to all three, use the native cursor. Most premium sites do — restraint is not a failure of craft.
 
 ### Tier 1: CSS Cursor Tracking with Variables & Calc
 
@@ -1611,9 +1622,16 @@ This is the single most common trait across Awwwards SOTD winners. Studios like 
 
 ---
 
-## Family 7: Marquee / Infinite Ticker (All Tiers)
+## Family 7: Marquee / Infinite Ticker (Brand Justified Only)
 
-A marquee adds perpetual motion to the page even when the user isn't scrolling. It makes the page feel alive, breathing, in motion — like a stock ticker or a departures board. Nearly every SOTD winner has at least one.
+A marquee adds perpetual motion to the page when content is worth repeating in motion. It has become a near-universal pattern in portfolio and agency sites — which means judges have seen it hundreds of times. It only earns its place when the content inside genuinely justifies the motion.
+
+**Brand gate — answer before building:**
+1. Does this brand have content worth repeating? (Real client logos, real project names, distinctive testimonials — not generic skill words)
+2. Would this content feel strong and specific in a static layout? If not, motion doesn't fix weak content.
+3. Does perpetual motion fit the brand's emotional trigger? A brand whose metaphor is "silence and pause" should not have a marquee.
+
+If YES to all three, build it. If not, replace it with something that actually serves the brand.
 
 ### How it works
 
@@ -1717,3 +1735,35 @@ ScrollTrigger pins the section to the viewport. A GSAP timeline is scrubbed by s
 | **Horizontal Scroll** | — | ScrollTrigger pin + translate | + parallax depth layers |
 | **Text Mask** | — | CSS background-clip: text | SVG clipPath + scroll-driven |
 | **Scrollytelling** | — | Pinned section + scrub timeline | + media crossfades + counters |
+
+---
+
+## Micro-Interactions: Brand Moments at the Section Level
+
+Every section must contain at least ONE small interaction that reveals the brand's personality. These are not signature interactions — they are the texture that proves intentionality. Awwwards-winning sites have them throughout; judges notice their absence more than their presence.
+
+**What a micro-interaction is:** A small, contained interaction — 200ms to 600ms — that responds to user action and communicates something specific about the brand. Not a full animation. Not decoration. A precise moment.
+
+**10 patterns by context:**
+
+- **Hover on text link:** Font weight momentarily increases (variable font `wght` axis). Text gets a background color that reveals whitespace design. A subtle underline draws in from one end. Duration: 200ms.
+
+- **Scroll into section:** A decorative line or shape appears first — signals "something is about to happen." The headline animates after. The preparatory element has variable opacity tied to scroll progress.
+
+- **Hover on image:** A scan-line effect (overlaid div with linear-gradient moving top to bottom). Or a color shift via `mix-blend-mode`. Not a zoom — something smaller and more considered.
+
+- **Loading state:** Instead of a spinner: dots fade in sequence with irregular timing (not mechanically perfect). Or brand acronym letters appear one by one, each with a different easing curve.
+
+- **Cursor idle (2 seconds):** A small hint appears near the cursor — "scroll", "explore", "play" — in the brand's typographic voice. Fades in at low opacity. Disappears on movement. Never intrusive.
+
+- **Form input focus:** The label doesn't just move — it rotates slightly, becomes a brand color, and the input gets a bottom border that draws from left to right via `clip-path` animation.
+
+- **Card hover:** Shadow changes in both opacity AND color (cool → warm, or vice versa). A small accent appears (fade-in 200ms). Card does not scale — it stays fixed size. Scaling reads as template.
+
+- **Number counter on scroll:** Numbers animate from zero to final value as the section enters view. Font weight also increases subtly (variable font axis). Creates a feeling of data "arriving."
+
+- **Color shift on scroll:** Background transitions through 3-4 brand colors based on scroll position. Smooth with 100ms delay between shifts. Not jarring — the user notices it 2 seconds after it happens.
+
+- **Text underline bloom:** The underline doesn't grow left-to-right. It appears as a dot, expands upward, then grows outward in both directions. 300ms total. Distinctive and unrepeatable.
+
+**The test:** If you removed the micro-interaction, would the section feel colder, more generic, less considered? If yes, it's doing its job.

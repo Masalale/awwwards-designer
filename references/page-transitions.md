@@ -1,5 +1,9 @@
 # Page Transitions: Barba.js + GSAP
 
+> **Invariant principle:** The difference between a website and a web experience is what happens when you navigate between pages. Seamless, choreographed transitions signal intentionality. This principle applies regardless of which library or browser API implements it.
+>
+> **Current-era note:** This file describes the Barba.js + GSAP pattern, which is current best practice for DOM-swap page transitions. The View Transitions API is an emerging native alternative. If you know of a superior implementation that produces the same seamless result, use it — honor the principle (no white flash, no full reload, intentional choreography), not the specific library.
+
 ## Why Page Transitions Matter
 
 The difference between a website and a web experience is what happens when you click a link. Default browser navigation — white flash, full page reload, content popping in — signals "standard website." Smooth, choreographed transitions between pages signal "crafted experience."
