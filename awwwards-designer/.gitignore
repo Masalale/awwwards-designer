@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+__pycache__/
+.venv/
+*.pyc
+*.pyo
+
+# Build output
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Test
+coverage/
+
+# TypeScript
+*.tsbuildinfo
+
+# Project-specific
+tokens.json
+INVENTION.mdskills-workdir/
+skills-workdir/
