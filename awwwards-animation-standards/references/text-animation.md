@@ -476,7 +476,7 @@ Problem: The 'g' in "Amazing" has a descender that extends below the baseline.
 /* MANDATORY for any display text >48px that uses scroll animations */
 .display-text {
   overflow: visible;           /* Allow descenders to render outside bounds */
-  padding-bottom: 0.15em;      /* Extra space below baseline for descenders */
+  padding-bottom: 0.18em;      /* Minimum clearance — measure actual descender per font via Canvas API */
   will-change: transform;      /* Hint GPU for transform animations */
 }
 
@@ -512,7 +512,7 @@ Problem: The 'g' in "Amazing" has a descender that extends below the baseline.
 /* CSS */
 .hero-title-wrap {
   overflow: visible;
-  padding-bottom: 0.15em; /* Space for descenders */
+  padding-bottom: 0.18em; /* Minimum clearance for descenders — measure per font */
 }
 
 .hero-title {
@@ -566,7 +566,7 @@ Symbols:    Most
 ### Descender Safety Checklist
 
 - [ ] All text elements >48px have `overflow: visible`
-- [ ] All text elements >48px have `padding-bottom: 0.15em`
+- [ ] All text elements >48px have `padding-bottom: 0.18em` minimum (measure per font via Canvas API)
 - [ ] Parent containers of animated text have `overflow: visible`
 - [ ] SplitType wrapper elements have `overflow: visible`
 - [ ] Line wrapper elements from SplitType have `overflow: visible`

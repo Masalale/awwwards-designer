@@ -6,12 +6,13 @@ The Invention Gate is the creative engine. It takes Phase 1 interview answers an
 
 ## Input: Interview Answers (Phase 1)
 
-1. Brand identity — what it does, what it stands for
-2. Target audience — who it serves, what they expect
-3. Tier — 1 (CSS), 2 (GSAP), 2.5 (light 3D), 3 (WebGL)
-4. Page count and content per page
-5. Interactive/data-driven sections (forms, dashboards, auth, checkout)
-6. Reference sites (optional)
+1. Brand name
+2. Brand identity — what it does, what it stands for
+3. Target audience — who it serves, what they expect
+4. Tier — 1 (CSS), 2 (GSAP), 2.5 (light 3D), 3 (WebGL)
+5. Page count and content per page
+6. Interactive/data-driven sections (forms, dashboards, auth, checkout)
+7. Reference sites (optional)
 
 ---
 
@@ -219,9 +220,7 @@ Wait for explicit confirmation. If the user requests changes — revise the anim
 
 Only after user confirms the animation map.
 
-Translate the brand identity into a Stitch-compatible visual brief following the 8-element format in `references/stitch-brief.md`. Framework declaration goes first.
-
-**Critical:** The Stitch prompt describes what the site LOOKS LIKE at rest. No animation instructions, no hover behaviors, no transition descriptions, no interaction specifics. The animation map owns everything that moves. Stitch designs the static visual layer only.
+Write the Stitch prompt following the format in `references/stitch-brief.md`. The Aesthetic Direction section is built by injecting the brand metaphors from this Invention Gate output verbatim, followed by the visual vocabulary and negative constraints each metaphor implies at rest.
 
 ---
 
@@ -233,7 +232,7 @@ Contains: global settings, per-page assignments, Three.js zones, SplitType targe
 
 **Output B: Stitch Prompt**
 Format: `references/stitch-brief.md`
-Contains: framework declaration, brand identity, aesthetic direction, typography, color, icons, page structure, device target.
+Contains: brand identity (actual name + description), aesthetic direction (INVENTION metaphors injected + derived visual vocabulary), typography, color, icons, shared components, page structure, device target.
 
 **Gate:** Both documents must exist and the animation map must be user-confirmed before Phase 3 begins.
 

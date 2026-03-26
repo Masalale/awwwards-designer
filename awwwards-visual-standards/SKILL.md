@@ -86,7 +86,7 @@ const descender = ctx.measureText('gjpqy').actualBoundingBoxDescent;
 .display-text {
   font-size: clamp(2.5rem, 7vw + 1rem, 7rem);
   overflow: visible;                    /* CRITICAL */
-  padding-bottom: 0.12em;               /* ~12% clearance — adjust per font */
+  padding-bottom: 0.18em;               /* minimum clearance — measure per font via Canvas API */
   line-height: 0.95;
 }
 ```
@@ -291,7 +291,7 @@ import { ArrowRight, Menu, Mail } from 'lucide-react';
 
 | Problem                            | Fix                                               |
 |------------------------------------|---------------------------------------------------|
-| Clipped descenders (g, y, p, q)   | `overflow: visible` + `padding-bottom: 0.08–0.12em` |
+| Clipped descenders (g, y, p, q)   | `overflow: visible` + `padding-bottom: 0.18em minimum` (measure per font) |
 | Mobile scroll overflow             | Replace `100vh` with `100dvh`                    |
 | Gray-500 text unreadable           | Upgrade to gray-600 (#4b5563) or darker           |
 | Icons clash in dark mode           | Use `stroke="currentColor"` on all SVGs          |
@@ -318,4 +318,4 @@ import { ArrowRight, Menu, Mail } from 'lucide-react';
 - [ ] Icons: Lucide only, 1.5px stroke, consistent sizes
 - [ ] Images: `<picture>`, AVIF/WebP, `srcset`/`sizes`, `fetchpriority="high"` on hero
 - [ ] Accessibility: Focus visible, reduced-motion, semantic HTML, 44px touch targets
-- [ ] Performance: Fonts preloaded, `font-display: swap`, CLS < 0.1
+- [ ] Performance: Fonts preloaded, `font-display: swap`, CLS < 0.05

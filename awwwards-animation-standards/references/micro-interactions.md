@@ -555,7 +555,8 @@ inputs.forEach(input => {
   transform: translateY(-50%);
   color: var(--color-text-muted);
   pointer-events: none;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .input-line {

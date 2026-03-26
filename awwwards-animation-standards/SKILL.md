@@ -42,21 +42,22 @@ a hard failure. `prefers-reduced-motion` is non-negotiable.
 
 ---
 
-## Tier-Based Animation Matrix
+## Animation Complexity Matrix
 
-Use this matrix to determine the right complexity tier for each interaction.
+> **Note:** This matrix describes per-interaction implementation complexity — not the project-level tier from the `awwwards-designer` workflow. A single Tier 2 project (designer tier) typically contains all four complexity levels simultaneously: CSS micro-interactions on buttons, scroll reveals on sections, pinned galleries, and page transitions.
 
-| Tier | Type | Approach | Duration | Complexity | When to Use |
-|------|------|----------|----------|------------|-------------|
-| **1** | CSS-only micro-interactions | CSS `transition` + `animation` | 0.15–0.4s | Low | Hover states, button feedback, toggles, form focus |
-| **2** | Scroll-triggered reveals | JS animation library + scroll observer | 0.5–1.2s | Medium | Section reveals, staggered content, parallax backgrounds |
-| **2.5** | Scroll + interaction combos | JS animation library + momentum scroll | 0.4–1.5s | Medium-High | Horizontal scroll galleries, pinned sections, parallax layers |
-| **3** | Full page transitions | JS animation library + router hooks | 0.4–0.8s per phase | High | Multi-page sites where transition quality defines the experience |
+| Level | Type | Approach | Duration | Complexity | When to Use |
+|-------|------|----------|----------|------------|-------------|
+| **CSS** | Micro-interactions | CSS `transition` + `animation` | 0.15–0.4s | Low | Hover states, button feedback, toggles, form focus |
+| **JS-Scroll** | Scroll-triggered reveals | JS animation library + scroll observer | 0.5–1.2s | Medium | Section reveals, staggered content, parallax backgrounds |
+| **JS-Advanced** | Scroll + interaction combos | JS animation library + momentum scroll | 0.4–1.5s | Medium-High | Horizontal scroll galleries, pinned sections, parallax layers |
+| **JS-Transitions** | Page transitions | JS animation library + TanStack Router hooks | 0.4–0.8s per phase | High | Multi-page sites where transition quality defines the experience |
 
-**Escalation criteria:**
-- Tier 1 → Tier 2: Content needs scroll-triggered reveals, staggered timing, or non-linear easing
-- Tier 2 → Tier 2.5: Need momentum-based smooth scroll or pinned scroll sequences
-- Tier 2.5 → Tier 3: Multi-page site with shared-element transitions or persistent animations across routes
+**Library selection by level:**
+- CSS: No library needed
+- JS-Scroll / JS-Advanced: GSAP + ScrollTrigger (scroll orchestration, multi-element choreography)
+- JS-Transitions: GSAP + TanStack Router hooks, or CSS View Transitions API (zero JS, simpler sequences)
+- Component state animations (mount/unmount, layout shifts): Framer Motion — see `awwwards-designer/references/tech-stack.md` for the GSAP vs Framer Motion domain boundary
 
 ---
 
@@ -112,7 +113,7 @@ These are non-negotiable. Violations are auto-fails in code review.
 /* MUST be applied to any display/hero text */
 .display-text {
   overflow: visible;
-  padding-bottom: 0.1em; /* Prevents descender clip during clip-path reveals */
+  padding-bottom: 0.18em; /* Minimum clearance — measure per font via Canvas API, see references/descender-safety.md */
 }
 ```
 **Why:** `clip-path` animations on text with descenders (g, y, p, q, j) will clip

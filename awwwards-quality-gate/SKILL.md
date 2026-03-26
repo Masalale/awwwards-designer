@@ -137,9 +137,9 @@ To receive **Honorable Mention** (the minimum recognition tier):
 
 **PASS criteria (all must be true):**
 
-- [ ] **LCP ≤ 2.5s**: Largest Contentful Paint within target on mobile 4G.
-- [ ] **CLS ≤ 0.1**: Cumulative Layout Shift near zero. No layout jumps as content loads.
-- [ ] **INP ≤ 200ms**: Interaction to Next Paint responsive. No sluggish clicks/inputs.
+- [ ] **LCP ≤ 1.8s**: Largest Contentful Paint within Awwwards target on mobile 4G. See `awwwards-performance-standards` skill for optimization techniques.
+- [ ] **CLS ≤ 0.05**: Cumulative Layout Shift near zero. No layout jumps as content loads.
+- [ ] **INP ≤ 100ms**: Interaction to Next Paint responsive. No sluggish clicks/inputs.
 - [ ] **No render-blocking resources**: All JS and non-critical CSS are deferred or async. `<link rel="stylesheet">` in `<head>` only for critical.
 - [ ] **Images optimized**: WebP/AVIF with fallbacks. Responsive `srcset`. Lazy loading on below-fold images.
 - [ ] **Fonts with `font-display: swap`**: No invisible text while fonts load. Fallback fonts are visually acceptable.
@@ -188,7 +188,7 @@ To receive **Honorable Mention** (the minimum recognition tier):
 > **Run these in order. Do not skip steps.**
 
 1. **Final `bun run build`** — Confirm clean build, zero errors, zero warnings in CI.
-2. **Lighthouse audit** — Run in Chrome DevTools. LCP ≤2.5s, CLS ≤0.1, INP ≤200ms, Accessibility ≥90.
+2. **Lighthouse audit** — Run in Chrome DevTools. LCP ≤1.8s, CLS ≤0.05, INP ≤100ms, Performance ≥90, Accessibility ≥90.
 3. **Mobile 375px test** — Chrome DevTools mobile emulation. Scroll, tap, type. Check for overflow.
 4. **Keyboard navigation test** — Tab through entire site. Every interactive element reachable and visible.
 5. **Touch target check** — Measure all buttons/links. Minimum 44×44px.

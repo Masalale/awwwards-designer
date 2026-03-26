@@ -28,14 +28,15 @@ These are non-negotiable. Violating any one is a build failure.
 
 ## Phase 1: Brief Interview
 
-Ask the user these 6 questions to extract everything the Invention Gate needs:
+Ask the user these 7 questions to extract everything the Invention Gate needs:
 
-1. What does the brand do and what does it stand for?
-2. Who is the target audience?
-3. What tier of animation? (1: CSS-only | 2: JS-enhanced | 2.5: light 3D | 3: WebGL/shaders)
-4. How many pages and what content on each?
-5. Are there any interactive or data-driven sections — forms, logins, dashboards, listings, checkout flows? If yes, describe each briefly.
-6. Any reference sites that capture the desired feel? (optional)
+1. What is the brand or store name?
+2. What does the brand do and what does it stand for?
+3. Who is the target audience?
+4. What tier of animation? (1: CSS-only | 2: JS-enhanced | 2.5: light 3D | 3: WebGL/shaders)
+5. How many pages and what content on each?
+6. Are there any interactive or data-driven sections — forms, logins, dashboards, listings, checkout flows? If yes, describe each briefly.
+7. Any reference sites that capture the desired feel? (optional)
 
 If the user provides brand colors, capture them exactly. If not, note that Stitch will choose.
 
@@ -85,10 +86,7 @@ Wait for explicit confirmation. Revise and re-present if needed. Do not proceed 
 ### 2.5 Translate to Stitch Prompt
 Only after user confirms the animation map.
 
-Following the format in `references/stitch-brief.md`:
-- Framework declaration (first — sets the ground rules for Stitch's output format)
-- Brand identity, aesthetic direction, typography, color, icons, page structure, device target
-- NO animation, 3D, or interaction instructions in the Stitch prompt
+Write the Stitch prompt following `references/stitch-brief.md`. The Aesthetic Direction section is the creative core — inject the brand metaphors from the Invention Gate verbatim, then follow with the visual vocabulary and negative constraints each metaphor implies at rest. Include the actual brand name (not the creative codename) and define shared components (nav, footer) explicitly so they are consistent across all generated screens.
 
 **Output:** Animation map (user-confirmed) + Stitch prompt.
 
@@ -98,7 +96,7 @@ Following the format in `references/stitch-brief.md`:
 
 ## Phase 3: Stitch MCP
 
-Drive Google Stitch programmatically via MCP to generate the design and build the project. Stitch adapts its output format based on the framework declared in the Stitch prompt.
+Drive Google Stitch programmatically via MCP to generate the design and build the project. Stitch always outputs HTML with Tailwind CSS — it has no awareness of any JavaScript framework. The TanStack Start project structure is established in Phase 4.
 
 ### 3.1 Create Project
 Call `create_project` via Stitch MCP. Once the project ID is returned, display the canvas link to the user:
@@ -110,22 +108,30 @@ Screens will appear here live as they are generated.
 ### 3.2 Generate Screens
 Call `generate_screen_from_text` for each page using the Stitch prompt from Phase 2.
 - Set `deviceType: "DESKTOP"`
-- Screen generation takes 2-10 minutes per screen. Wait for completion before generating the next.
+- Screen generation takes 2-10 minutes per screen. After each call returns, immediately call `list_screens` to confirm the screen is present in the project before generating the next. This catches silent failures without retrying prematurely.
+- After each screen is confirmed, tell the user: "✓ [Page name] screen is live on your canvas."
+- Collect every screenId as screens are confirmed — all are needed for the harmonization pass.
 
-### 3.3 Review Gate
-After all screens are generated, prompt the user:
+### 3.3 Cross-Page Harmonization
+`generate_screen_from_text` is always a single, independent call. It has no memory of the other pages generated in the same project. The harmonization pass corrects any inconsistencies that result from independent generation.
+
+Call `edit_screens` once with **all screenIds** in `selectedScreenIds`. This single call gives Stitch visibility across every screen simultaneously, allowing it to reconcile shared visual properties across the entire site.
+
+Harmonization prompt: "Unify all screens so that the navigation bar, footer, button styles, card styles, typography scale, and color usage are identical across every page. Fix any visual inconsistencies introduced by independent generation. Apply the design decisions established in the strongest screen to all others."
+
+### 3.4 Review Gate
+After the harmonization pass, prompt the user:
 ```
-All screens are live at your Stitch canvas. Review and edit them until you're happy,
-then reply here when you're ready to build.
+All screens are live at your Stitch canvas. Review them and make any edits directly on the canvas until you're happy, then reply here when you're ready to build.
 ```
 Wait for explicit user confirmation before proceeding.
 
-### 3.4 Build Site
+### 3.5 Build Site
 Call `build_site` with the project ID and route mappings:
 - Map each screen to its URL route (e.g., screenA -> "/", screenB -> "/work")
-- Output: Project in the declared framework with Tailwind HTML, one page per route
+- Output: HTML pages with Tailwind CSS, one per route.
 
-### 3.5 Extract Design Context
+### 3.6 Extract Design Context
 Call `extract_design_context` to get the Design DNA (fonts, colors, layouts).
 Save as DESIGN.md in the project root.
 
@@ -147,6 +153,16 @@ Read before implementing:
 - `references/descender-safety.md` for typography safety
 
 Fetch current API docs via Context7 for every library before writing code.
+
+### 4.0 Project Scaffolding
+Stitch outputs plain HTML files — one per page. Phase 4 begins by establishing the TanStack Start project that the enhancement layer runs inside.
+
+Use Context7 to fetch the current TanStack Start initialization command before running it — the CLI and package name evolve and a stale command will fail silently or scaffold the wrong structure. Initialize with React + Tailwind CSS.
+
+Once the project is initialized:
+- Replace the generated placeholder routes with the Stitch HTML pages, one route per page
+- Preserve all Tailwind classes and structure from the Stitch output exactly — DESIGN.md is the design authority and the Stitch HTML is its implementation
+- Do not restyle or restructure anything at this stage; the enhancement layer adds motion on top of the Stitch design, it does not replace it
 
 ### 4.1 Global Setup
 Implement site-wide concerns first:

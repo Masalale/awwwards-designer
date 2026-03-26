@@ -14,9 +14,9 @@ Brief Interview  →  Invention Gate  →  Stitch MCP  →  Enhancement Layer  �
 
 | Phase | What Happens |
 |-------|-------------|
-| **Brief Interview** | 6 questions. Brand identity, audience, animation tier, pages, interactions, references. |
+| **Brief Interview** | 7 questions. Brand name, identity, audience, animation tier, pages, interactions, references. |
 | **Invention Gate** | Brand metaphor extracted → motion language defined → animation map produced → Stitch prompt written. No code yet. |
-| **Stitch MCP** | Google Stitch generates all screens. `build_site` outputs a TanStack Start project. `DESIGN.md` captures the full Design DNA. |
+| **Stitch MCP** | Google Stitch generates all screens. `build_site` outputs HTML with Tailwind CSS. `extract_design_context` produces `DESIGN.md` — the design source of truth. |
 | **Enhancement Layer** | Animation and interaction layer built on top of Stitch output. `DESIGN.md` is the single source of truth — nothing overrides it. |
 | **Quality Gate** | 8-gate pass/fail checklist. Ship only when every gate passes. |
 

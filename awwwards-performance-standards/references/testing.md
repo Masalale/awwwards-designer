@@ -480,12 +480,12 @@ jobs:
               console.error('Performance score ' + perf + ' < 85 — REGRESSION');
               process.exit(1);
             }
-            if (lcp > 2500) {
-              console.error('LCP ' + lcp + 'ms > 2500ms — REGRESSION');
+            if (lcp > 1800) {
+              console.error('LCP ' + lcp + 'ms > 1800ms — REGRESSION (Awwwards target: <1.8s)');
               process.exit(1);
             }
-            if (cls > 0.1) {
-              console.error('CLS ' + cls + ' > 0.1 — REGRESSION');
+            if (cls > 0.05) {
+              console.error('CLS ' + cls + ' > 0.05 — REGRESSION (Awwwards target: <0.05)');
               process.exit(1);
             }
             console.log('All checks passed');

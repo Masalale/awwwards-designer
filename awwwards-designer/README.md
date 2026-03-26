@@ -44,13 +44,13 @@ git clone https://github.com/Masalale/awwwards-designer.git ~/.agents/skills/aww
 Brief → Invention Gate → Stitch → Enhancement Layer → Quality Gate
 ```
 
-**Brief** — 6 questions. Brand, audience, tier, pages, interactive sections, references.
+**Brief** — 7 questions. Brand name, identity, audience, tier, pages, interactive sections, references.
 
 **Invention Gate** — Extracts brand metaphors, derives motion language, generates the animation map. User confirms before Stitch sees anything.
 
-**Stitch** — Designs the 2D visual layer from the confirmed brief. Outputs project files + `DESIGN.md` as the design source of truth.
+**Stitch** — Designs the 2D visual layer from the confirmed brief. Outputs HTML pages with Tailwind CSS. `extract_design_context` captures the Design DNA as `DESIGN.md` — the single source of truth for all design decisions.
 
-**Enhancement Layer** — Adds GSAP, Three.js, Lenis, SplitType, and TanStack Router page transitions on top of the Stitch output. All decisions driven by DESIGN.md and the animation map.
+**Enhancement Layer** — TanStack Start is scaffolded, Stitch HTML is integrated, then the animation and interaction layer is added on top. Library selection is driven by the animation map tier. All design decisions are driven by `DESIGN.md`.
 
 **Quality Gate** — Pass/fail checklist. All pass or fix before shipping.
 

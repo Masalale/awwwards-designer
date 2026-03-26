@@ -106,22 +106,16 @@ Text clipping on letters g, y, p, q, j happens when:
 
 **Rule:** Any text element where `font-size > 48px` must have:
 ```css
-/* Option 1: overflow visible */
 .oversized-text {
   font-size: 72px;
-  overflow: visible;
-  /* Add padding-bottom to prevent visual collision */
-  padding-bottom: 8px;
-}
-
-/* Option 2: explicit line-height */
-.oversized-text {
-  font-size: 72px;
-  line-height: 1.1; /* enough to contain descenders */
+  overflow: visible;          /* never overflow: clip — clip ignores padding */
+  padding-bottom: 0.18em;     /* minimum; measure actual descender per font via Canvas API */
 }
 ```
 
-Test: Render "gypqj" at max font size and verify full glyph visibility.
+Measure actual descender depth: `ctx.measureText('gjpqy').actualBoundingBoxDescent` at your font size. Add 20% buffer. See `awwwards-designer/references/descender-safety.md` for the full protocol.
+
+Test: Render "Typography Gg Yy Qq Pp" at max font size and verify full glyph visibility at the baseline edge.
 
 ---
 

@@ -365,7 +365,7 @@ console.log(measureDescender('Fraunces', 100));
 .hero-heading {
   font-size: var(--font-size-display);
   overflow: visible; /* CRITICAL */
-  padding-bottom: 0.12em; /* ~12% clearance, adjust per font */
+  padding-bottom: 0.18em; /* minimum clearance — measure actual descender per font via Canvas API */
   line-height: 0.95;
 }
 ```

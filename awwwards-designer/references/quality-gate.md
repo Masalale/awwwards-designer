@@ -32,15 +32,16 @@ Run this checklist after the Enhancement Layer completes. Every item must pass b
 - [ ] **Context7 docs fetched** — Current API docs fetched via Context7 for every library before integration code was written.
 - [ ] **GSAP context cleanup** — `gsap.context()` wraps all animations. Cleanup runs on page transitions.
 - [ ] **Three.js disposal** — If Tier 2.5+: geometries, materials, and renderers disposed on cleanup. No GPU memory leaks.
+- [ ] **`prefers-reduced-motion` respected** — All JS-driven animations are skipped or reduced when `window.matchMedia('(prefers-reduced-motion: reduce)').matches`. CSS animations suppressed via the global `prefers-reduced-motion` media query. Site must be fully usable without motion.
 
 ## Performance (by Tier)
 
-| Metric | Tier 1 | Tier 2 | Tier 2.5 | Tier 3 |
-|--------|--------|--------|----------|--------|
-| FCP | < 1.0s | < 1.2s | < 1.3s | < 1.5s |
-| LCP | < 2.5s | < 2.5s | < 2.5s | < 3.0s |
-| CLS | < 0.1 | < 0.1 | < 0.1 | < 0.1 |
-| INP | < 200ms | < 200ms | < 200ms | < 200ms |
+| Metric | All Tiers |
+|--------|-----------|
+| LCP | < 1.8s — WebGL/3D must lazy-init after first paint |
+| CLS | < 0.05 |
+| INP | < 100ms |
+| FCP | < 1.2s — Tier 1 target is < 1.0s |
 
 - [ ] **Core Web Vitals within tier targets** — Run Lighthouse audit. All metrics pass.
 
@@ -51,8 +52,6 @@ Run this checklist after the Enhancement Layer completes. Every item must pass b
 - [ ] **No broken assets** — All images, fonts, and scripts resolve (no 404s).
 
 ---
-
-## Routing
 
 - **All pass** — Ship.
 - **Any fail** — Fix before shipping. No exceptions.
