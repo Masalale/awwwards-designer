@@ -55,3 +55,49 @@ Run this checklist after the Enhancement Layer completes. Every item must pass b
 
 - **All pass** — Ship.
 - **Any fail** — Fix before shipping. No exceptions.
+
+---
+
+## Awwwards Jury Scoring
+
+| Criterion | Weight |
+|-----------|--------|
+| Design | 40% |
+| Usability | 30% |
+| Creativity | 20% |
+| Content | 10% |
+
+**Honorable Mention** requires jury average ≥ 6.5 AND user average ≥ 6.5.
+**SOTD** requires consistently high marks across all four criteria.
+
+---
+
+## The 8 Gates (Summary)
+
+**All 8 must pass. Any fail = fix before shipping. No exceptions.**
+
+| Gate | Area | Key PASS Criteria |
+|------|------|-------------------|
+| **1** | Design | Typography matches DESIGN.md, WCAG AA contrast, no clipped descenders, Lucide icons consistent |
+| **2** | Creativity | Unique concept, memorable first impression, signature element present, animation serves narrative |
+| **3** | Content | No lorem ipsum, brand voice, clear hierarchy, specific CTAs |
+| **4** | Usability | Mobile 375px functional, 44px touch targets, keyboard navigable, forms work, 404 page exists |
+| **5** | Performance | LCP ≤ 1.8s, CLS ≤ 0.05, INP ≤ 100ms, images optimized, fonts with `font-display: swap` |
+| **6** | Animation | Purpose-driven, physical easing, page transitions, signature interaction, `prefers-reduced-motion` respected |
+| **7** | Technical | Build succeeds, no dead routes, no 404 assets, semantic HTML, no `transition: all` |
+| **8** | Pre-Launch | Lighthouse audit, mobile test, keyboard nav test, touch target check, asset resolution check |
+
+---
+
+## Pre-Launch Audit Sequence (Gate 8 Runbook)
+
+1. **Final `bun run build`** — clean build, zero errors, zero warnings
+2. **Lighthouse audit** — LCP ≤ 1.8s, CLS ≤ 0.05, INP ≤ 100ms, Perf ≥ 90, A11y ≥ 90
+3. **Mobile 375px test** — scroll, tap, type, check for horizontal overflow
+4. **Keyboard navigation** — Tab through the entire site, every element reachable
+5. **Touch targets** — all interactive elements ≥ 44×44px
+6. **Form exhaustiveness** — fill every form, submit, check success/error states
+7. **404 crawl** — navigate to `/does-not-exist`, verify branded 404 renders
+8. **`prefers-reduced-motion` test** — enable in OS settings, verify graceful degradation
+9. **Asset resolution** — Network tab: zero 404s on images, fonts, scripts
+10. **Screenshot comparison** — desktop + mobile, review for visual regressions
