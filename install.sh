@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Awwwards Skill Suite — Installer
-# Installs all 5 skills into ~/.agents/skills/
+# Awwwards Designer — Unified Skill Installer
+# Installs the single awwwards-designer skill into ~/.agents/skills/
 # Usage: bash install.sh
 
 set -e
@@ -8,37 +8,28 @@ set -e
 SKILLS_DIR="$HOME/.agents/skills"
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-SKILLS=(
-  awwwards-designer
-  awwwards-animation-standards
-  awwwards-performance-standards
-  awwwards-quality-gate
-  awwwards-visual-standards
-)
-
-echo "Installing Awwwards Skill Suite to $SKILLS_DIR"
+echo "Installing Awwwards Designer skill to $SKILLS_DIR"
 echo ""
 
 mkdir -p "$SKILLS_DIR"
 
-for skill in "${SKILLS[@]}"; do
-  src="$REPO_DIR/$skill"
-  dest="$SKILLS_DIR/$skill"
+src="$REPO_DIR/awwwards-designer"
+dest="$SKILLS_DIR/awwwards-designer"
 
-  if [ -d "$dest" ]; then
-    echo "  ↑  $skill (updating)"
-    rm -rf "$dest"
-  else
-    echo "  +  $skill"
-  fi
+if [ -d "$dest" ]; then
+  echo "  ↑  awwwards-designer (updating)"
+  rm -rf "$dest"
+else
+  echo "  +  awwwards-designer"
+fi
 
-  cp -r "$src" "$dest"
-done
+cp -r "$src" "$dest"
 
 echo ""
-echo "Done. All 5 skills installed at $SKILLS_DIR"
+echo "Done. Skill installed at $SKILLS_DIR/awwwards-designer"
 echo ""
-echo "Skills available:"
-for skill in "${SKILLS[@]}"; do
-  echo "  · $skill"
-done
+echo "Symlink to other harnesses (optional):"
+echo "  ln -s $SKILLS_DIR/awwwards-designer ~/.claude/skills/awwwards-designer"
+echo "  ln -s $SKILLS_DIR/awwwards-designer ~/.config/opencode/skills/awwwards-designer"
+echo "  ln -s $SKILLS_DIR/awwwards-designer ~/.openclaw/skills/awwwards-designer"
+echo "  ln -s $SKILLS_DIR/awwwards-designer ~/.hermes/skills/awwwards-designer"

@@ -171,7 +171,7 @@ No JS animation library needed. CSS alone achieves scroll-driven animations, ent
 
 ## Core Web Vitals (All Tiers)
 
-These are outcomes — achieve them regardless of which libraries are used. Awwwards targets: **LCP < 1.8s | CLS < 0.05 | INP < 100ms | FCP < 1.2s**. See `awwwards-performance-standards` for full optimization techniques.
+These are outcomes — achieve them regardless of which libraries are used. Awwwards targets: **LCP < 1.8s | CLS < 0.05 | INP < 100ms | FCP < 1.2s**. See the Performance Standards section and references/ for full optimization techniques.
 
 **FCP:** Inline critical CSS for above-fold content. Preload custom fonts with `font-display: swap`.
 
